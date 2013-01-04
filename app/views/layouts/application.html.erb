@@ -1,16 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Due It</title>
-  <%= stylesheet_link_tag    "application" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
+	<title>Due It</title>
+	<%= stylesheet_link_tag    "application" %>
+	<%= javascript_include_tag "application" %>
+	<%= csrf_meta_tags %>
 </head>
 
 <body>
 	<header>
-		<h1><a href="/">Due It</a></h1>
+		<h1><%= link_to 'Due It', root_path %></h1>
 	</header>
+
+	<nav>
+		<ul>
+			<li><%= link_to 'Add Task', new_task_path %></li>
+			<li><%= link_to 'Tasks', tasks_path %></li>
+			<li><%= link_to 'Milestones', root_path %></li>
+			<li><%= link_to 'Projects', root_path %></li>
+		</ul>
+	</nav>
 
 	<div id="content">
 		<% flash.each do |key, value| %>
