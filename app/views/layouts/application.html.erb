@@ -1,14 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>TestApp</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <title>Due It</title>
+  <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
+
 <body>
+	<header>
+		<h1><a href="/">Due It</a></h1>
+	</header>
 
-<%= yield %>
+	<div id="content">
+		<% flash.each do |key, value| %>
+			<%= content_tag(:div, value, class: "flash #{key}") %>
+		<% end %>
 
+		<%= yield %>
+	</div>
+
+	<% debug(params) if Rails.env.development? %>
 </body>
 </html>
