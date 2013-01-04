@@ -1,5 +1,5 @@
 TestApp::Application.routes.draw do
   resources :tasks
 
-  root :to => 'tasks#index'
+  root to: 'tasks#index'
 end

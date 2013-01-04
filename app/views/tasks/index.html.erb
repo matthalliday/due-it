@@ -1,10 +1,12 @@
-<h1>All Tasks</h1>
+<section>
+	<h1>All Tasks</h1>
 
-<ul>
-  <% @tasks.each do |task| %>
-    <li>
-       <h2><%= link_to task.name, task %></h2>
-       <p>Due <strong><%= time_ago_in_words(task.due_date) %></strong> from now</p>
-    </li>
-  <% end %>
-</ul>
+	<% @tasks.each do |task| %>
+		<article>
+			<h1><%= link_to task.name, task %></h1>
+			<p>Estimate: <strong><%= task.estimate %></strong></p>
+			<p>Due: <strong><%= time_ago_in_words task.due_date %></strong></p>
+			<p>Priority: <strong><%= task.priority %></strong></p>
+		</article>
+	<% end %>
+</section>
