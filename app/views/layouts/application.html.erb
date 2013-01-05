@@ -14,22 +14,9 @@
 
 	<nav>
 		<ul>
-			<li>
-				<strong>Add</strong>
-				<ul>
-					<li><%= link_to 'Task', new_task_path %></li>
-					<li><%= link_to 'Milestone', root_path %></li>
-					<li><%= link_to 'Project', new_project_path %></li>
-				</ul>
-			</li>
-			<li>
-				<strong>View</strong>
-				<ul>
-					<li><%= link_to 'Tasks', tasks_path %></li>
-					<li><%= link_to 'Milestones', root_path %></li>
-					<li><%= link_to 'Projects', projects_path %></li>
-				</ul>
-			</li>
+			<li><%= link_to 'Tasks', tasks_path %></li>
+			<li><%= link_to 'Milestones', root_path %></li>
+			<li><%= link_to 'Projects', projects_path %></li>
 		</ul>
 	</nav>
 
