@@ -1,2 +1,7 @@
-<h1>Projects#show</h1>
-<p>Find me in app/views/projects/show.html.erb</p>
+<article>
+	<h1><%= @project.name %></h1>
+	<div><%= raw @project.description %></div>
+
+	<%= link_to 'Edit Project', edit_project_path(@project) %>
+	<%= link_to 'Remove Project', @project, method: :delete, confirm: 'Are you sure you want to delete this project and all its tasks?' %>
+</article>
