@@ -1,10 +1,11 @@
 class TasksController < ApplicationController
+  before_filter :get_task, only: [:edit, :update, :destroy, :show]
+
   def index
     @tasks = Task.all
   end
 
   def show
-    @task = Task.find(params[:id])
   end
 
   def new
@@ -21,11 +22,29 @@ class TasksController < ApplicationController
       render :new
     end
   end
-  
+
+  def edit
+  end
+
+  def update
+    if @task.update_attributes(params[:task])
+      redirect_to @task
+      flash[:success] = "Nice going! The task was successfully updated."
+    else
+      flash[:error] = "Dang! Fix the errors below and try again."
+      render :edit
+    end
+  end
+
   def destroy
-    @task = Task.find(params[:id])
     @task.destroy
     flash[:success] = "Congrats, bro! That task has been deleted."
     redirect_to root_path
+  end
+
+  private
+
+  def get_task
+    @task = Task.find(params[:id])
   end
 end
