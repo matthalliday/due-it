@@ -1,4 +1,9 @@
 <article>
 	<h1><%= @task.name %></h1>
 	<%= raw @task.description %>
+	<p>Estimate: <strong><%= @task.estimate %></strong></p>
+	<p>Due: <strong><%= time_ago_in_words @task.due_date %></strong></p>
+	<p>Priority: <strong><%= @task.priority %></strong></p>
+
+	<%= link_to 'Remove Task', @task, method: :delete %>
 </article>

@@ -1,5 +1,6 @@
 <section>
 	<h1>All Tasks</h1>
+	<%= raw "You don't have any tasks &ndash; why not #{link_to 'add one', new_task_path}?" if @tasks.empty? %>
 
 	<% @tasks.each do |task| %>
 		<article>
