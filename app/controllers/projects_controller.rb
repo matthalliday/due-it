@@ -6,6 +6,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    @tasks = @project.tasks.all
   end
 
   def new
@@ -24,6 +25,7 @@ class ProjectsController < ApplicationController
   end
 
   def edit
+    # TODO allow editing of project
   end
 
   def update
