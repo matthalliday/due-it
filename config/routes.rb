@@ -1,5 +1,7 @@
 TestApp::Application.routes.draw do
-  resources :tasks
+  resources :projects do
+    resources :tasks
+  end
 
   root to: 'tasks#index'
 end
