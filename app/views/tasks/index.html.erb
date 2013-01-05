@@ -1,13 +1,21 @@
 <section>
 	<h1>All Tasks</h1>
-	<%= raw "You don't have any tasks &ndash; why not #{link_to 'add one', new_task_path}?" if @tasks.empty? %>
+	<%= raw "You don't have any projects &ndash; why not #{link_to 'add one', new_project_path}?" if @projects.empty? %>
 
-	<% @tasks.each do |task| %>
+	<% @projects.each do |project| %>
 		<article>
-			<h1><%= link_to task.name, task %></h1>
-			<p>Estimate: <strong><%= task.estimate %></strong></p>
-			<p>Due: <strong><%= distance_of_time_in_words_to_now task.due_date %></strong></p>
-			<p>Priority: <strong><%= task.priority.titleize %></strong></p>
+			<h1><%= link_to project.name, project %></h1>
+
+			<ul>
+				<% project.tasks.each do |task| %>
+					<li>
+						<h2><%= link_to task.name, [project, task] %></h2>
+						<p>Estimate: <strong><%= task.estimate %></strong></p>
+						<p>Due: <strong><%= distance_of_time_in_words_to_now task.due_date %></strong></p>
+						<p>Priority: <strong><%= task.priority.titleize %></strong></p>
+					</li>
+				<% end %>
+			</ul>
 		</article>
 	<% end %>
 </section>

@@ -25,7 +25,6 @@ class ProjectsController < ApplicationController
   end
 
   def edit
-    # TODO allow editing of project
   end
 
   def update
