@@ -1,10 +1,14 @@
-<article>
-	<h1><%= @task.name %></h1>
-	<p><%= raw @task.description %></p>
-	<p>Estimate: <strong><%= @task.estimate %></strong></p>
-	<p>Due: <strong><%= distance_of_time_in_words_to_now @task.due_date %></strong></p>
-	<p>Priority: <strong><%= @task.priority.titleize %></strong></p>
+<section>
+	<h1><%= link_to @project.name, @project %></h1>
 
-	<%= link_to 'Edit Task', edit_project_task_path(@project, @task) %>
-	<%= link_to 'Remove Task', [@project, @task], method: :delete, confirm: 'Are you sure you want to delete this task?' %>
-</article>
+	<article>
+		<h1><%= @task.name %></h1>
+		<p><%= raw @task.description %></p>
+		<p>Estimate: <strong><%= @task.estimate %></strong></p>
+		<p>Due: <strong><%= distance_of_time_in_words_to_now @task.due_date %></strong></p>
+		<p>Priority: <strong><%= @task.priority.titleize %></strong></p>
+
+		<%= link_to 'Edit Task', edit_project_task_path(@project, @task) %>
+		<%= link_to 'Remove Task', [@project, @task], method: :delete, confirm: 'Are you sure you want to delete this task?' %>
+	</article>
+</section>

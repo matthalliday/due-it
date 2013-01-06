@@ -8,16 +8,12 @@
 </head>
 
 <body>
-	<header>
+	<header role="banner">
 		<h1><%= link_to 'Due It', root_path %></h1>
 	</header>
 
-	<nav>
-		<ul>
-			<li><%= link_to 'Tasks', root_path %></li>
-			<li><%= link_to 'Milestones', root_path %></li>
-			<li><%= link_to 'Projects', projects_path %></li>
-		</ul>
+	<nav role="navigation">
+		<%= render 'partials/navigation' %>
 	</nav>
 
 	<div id="content">
