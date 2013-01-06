@@ -1,4 +1,6 @@
 <%= form_for @project do |f| %>
+	<%= render 'partials/errors', object: @project %>
+
 	<div class="field">
 		<%= f.label :name %><br />
 		<%= f.text_field :name %>
