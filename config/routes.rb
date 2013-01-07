@@ -1,7 +1,9 @@
 DueIt::Application.routes.draw do
+  root to: 'tasks#index'
+
   resources :projects do
     resources :tasks
   end
 
-  root to: 'tasks#index'
+  get '/tasks' => 'tasks#index', as: 'all_tasks'
 end
