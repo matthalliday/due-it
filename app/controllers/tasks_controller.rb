@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_filter :get_project, except: :index
+  before_filter :get_project, only: [:show, :new, :create, :edit, :update, :destroy]
 
   def index
     @projects = Project.all
@@ -44,6 +44,18 @@ class TasksController < ApplicationController
     @task.destroy
     flash[:success] = "Congrats, bro! That task has been deleted."
     redirect_to @project
+  end
+
+  def this_week
+    @tasks = Task.due_this_week
+  end
+
+  def next_week
+    @tasks = Task.due_next_week
+  end
+
+  def this_month
+    @tasks = Task.due_this_month
   end
 
   private
