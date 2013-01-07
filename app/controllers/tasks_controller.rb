@@ -46,6 +46,7 @@ class TasksController < ApplicationController
     redirect_to @project
   end
 
+  # TODO refactor methods using define_method
   def this_week
     @tasks = Task.due_this_week
   end
