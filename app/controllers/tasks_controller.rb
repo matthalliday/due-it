@@ -1,12 +1,12 @@
 class TasksController < ApplicationController
-  before_filter :get_project, only: [:show, :new, :create, :edit, :update, :destroy]
+  before_filter :get_project, except: [:index, :this_week, :next_week, :this_month]
+  before_filter :get_task, only: [:show, :edit, :update, :destroy, :complete]
 
   def index
     @projects = Project.all
   end
 
   def show
-    @task = @project.tasks.find(params[:id])
   end
 
   def new
@@ -25,11 +25,9 @@ class TasksController < ApplicationController
   end
 
   def edit
-    @task = @project.tasks.find(params[:id])
   end
 
   def update
-    @task = @project.tasks.find(params[:id])
     if @task.update_attributes(params[:task])
       redirect_to [@project, @task]
       flash[:success] = "Nice going! The task was successfully updated."
@@ -40,28 +38,38 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    @task = @project.tasks.find(params[:id])
     @task.destroy
     flash[:success] = "Congrats, bro! That task has been deleted."
     redirect_to @project
   end
 
+  def complete
+    @task.status = 'complete'
+    @task.save
+    redirect_to [@project, @task]
+    flash[:success] = "High five, bro! You just completed a task."
+  end
+
   # TODO refactor methods using define_method
   def this_week
-    @tasks = Task.due_this_week
+    @tasks = Task.this_week
   end
 
   def next_week
-    @tasks = Task.due_next_week
+    @tasks = Task.next_week
   end
 
   def this_month
-    @tasks = Task.due_this_month
+    @tasks = Task.this_month
   end
 
   private
 
   def get_project
     @project = Project.find(params[:project_id])
+  end
+
+  def get_task
+    @task = @project.tasks.find(params[:id])
   end
 end
