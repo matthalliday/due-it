@@ -28,6 +28,13 @@
 			                        ['High','high']],
 			                        'normal') %>
 	</div>
+	<div class="field">
+		<%= f.label :status %><br />
+		<%= f.select :status, options_for_select(
+			                        [['Incomplete','incomplete'],
+			                        ['Complete','complete']],
+			                        'incompete') %>
+	</div>
 	<div class="field submit">
 		<br />
 		<%= f.submit %>

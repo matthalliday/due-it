@@ -39,8 +39,8 @@ class TasksController < ApplicationController
 
   def destroy
     @task.destroy
-    flash[:success] = "Congrats, bro! That task has been deleted."
     redirect_to @project
+    flash[:success] = "Congrats, bro! That task has been deleted."
   end
 
   def complete
@@ -48,6 +48,10 @@ class TasksController < ApplicationController
     @task.save
     redirect_to @project
     flash[:success] = "High five, bro! You just completed a task."
+  end
+
+  def completed
+    @tasks = @project.tasks.complete
   end
 
   # TODO refactor methods using define_method
