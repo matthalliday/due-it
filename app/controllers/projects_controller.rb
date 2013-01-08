@@ -6,7 +6,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @tasks = @project.tasks.all
+    @tasks = @project.tasks.incomplete.all
   end
 
   def new

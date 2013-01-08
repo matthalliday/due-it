@@ -46,21 +46,21 @@ class TasksController < ApplicationController
   def complete
     @task.status = 'complete'
     @task.save
-    redirect_to [@project, @task]
+    redirect_to @project
     flash[:success] = "High five, bro! You just completed a task."
   end
 
   # TODO refactor methods using define_method
   def this_week
-    @tasks = Task.this_week
+    @tasks = Task.incomplete.this_week
   end
 
   def next_week
-    @tasks = Task.next_week
+    @tasks = Task.incomplete.next_week
   end
 
   def this_month
-    @tasks = Task.this_month
+    @tasks = Task.incomplete.this_month
   end
 
   private
