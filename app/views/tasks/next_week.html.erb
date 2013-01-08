@@ -7,7 +7,7 @@
 		<% @tasks.each do |task| %>
 			<li>
 				<h2><%= task.name %></h2>
-				<p>Due: <strong><%= distance_of_time_in_words_to_now task.due_date %></strong></p>
+				<p>Due: <strong><%= task.due_date.strftime('%B %-d') %></strong></p>
 			</li>
 		<% end %>
 	</ul>
