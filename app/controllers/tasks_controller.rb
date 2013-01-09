@@ -54,9 +54,11 @@ class TasksController < ApplicationController
     @tasks = @project.tasks.complete
   end
 
-  %w(this_week next_week this_month).each do |task_window|
-    define_method "#{task_window}" do
-      @tasks = Task.incomplete.send(task_window)
+  %w(this_week next_week this_month).each do |due_window|
+    define_method "#{due_window}" do
+      @tasks = Task.incomplete.send(due_window)
+      @due_window = due_window.humanize.downcase
+      render :due_window
     end
   end
 

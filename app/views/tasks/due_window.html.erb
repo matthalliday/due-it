@@ -1,7 +1,6 @@
-<% # TODO refactor views for all due date based views %>
 <article>
-	<h1>Due this week</h1>
-	<%= raw "Looks like there's nothing due this week" if @tasks.empty? %>
+	<h1>Due <%= @due_window %></h1>
+	<%= raw "Looks like there's nothing due #{@due_window}" if @tasks.empty? %>
 
 	<ul>
 		<% @tasks.each do |task| %>
