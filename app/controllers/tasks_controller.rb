@@ -54,17 +54,10 @@ class TasksController < ApplicationController
     @tasks = @project.tasks.complete
   end
 
-  # TODO refactor methods using define_method
-  def this_week
-    @tasks = Task.incomplete.this_week
-  end
-
-  def next_week
-    @tasks = Task.incomplete.next_week
-  end
-
-  def this_month
-    @tasks = Task.incomplete.this_month
+  %w(this_week next_week this_month).each do |task_window|
+    define_method "#{task_window}" do
+      @tasks = Task.incomplete.send(task_window)
+    end
   end
 
   private
