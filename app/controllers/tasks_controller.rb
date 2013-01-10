@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_filter :get_project, except: [:index, :this_week, :next_week, :this_month]
+  before_filter :get_project, except: [:index, :due_this_week, :due_next_week, :due_this_month, :overdue]
   before_filter :get_task, only: [:show, :edit, :update, :destroy, :complete]
 
   def index
@@ -54,10 +54,10 @@ class TasksController < ApplicationController
     @tasks = @project.tasks.complete
   end
 
-  %w(this_week next_week this_month).each do |due_window|
+  %w(due_this_week due_next_week due_this_month overdue).each do |due_window|
     define_method "#{due_window}" do
       @tasks = Task.incomplete.send(due_window)
-      @due_window = due_window.humanize.downcase
+      @due_window = due_window.humanize
       render :due_window
     end
   end

@@ -1,12 +1,14 @@
 <article>
-	<h1>Due <%= @due_window %></h1>
-	<%= raw "Looks like there's nothing due #{@due_window}" if @tasks.empty? %>
+	<h1><%= @due_window %></h1>
+	<%= raw "Looks like there's nothing #{@due_window.downcase}" if @tasks.empty? %>
 
 	<ul>
 		<% @tasks.each do |task| %>
 			<li>
 				<h2><%= link_to task.name, Project.find(task.project_id) %></h2>
+				<p>Estimate: <strong><%= task.estimate %></strong></p>
 				<p>Due: <strong><%= task.due_date.strftime('%B %-d') %></strong></p>
+				<p>Priority: <strong><%= task.priority.titleize %></strong></p>
 			</li>
 		<% end %>
 	</ul>
