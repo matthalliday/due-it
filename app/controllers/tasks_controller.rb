@@ -3,7 +3,10 @@ class TasksController < ApplicationController
   before_filter :get_task, only: [:show, :edit, :update, :destroy, :complete]
 
   def index
-    @projects = Project.all
+    @projects = []
+    Project.all.each do |project|
+      @projects.push(project) if project.tasks.incomplete.any?
+    end
   end
 
   def show
