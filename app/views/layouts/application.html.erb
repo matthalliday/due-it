@@ -21,23 +21,22 @@
 
 <body>
 	<header role="banner">
-		<h1><%= link_to 'Due It', root_path %></h1>
-
-		<nav role="navigation">
-			<%= render 'partials/navigation' %>
-		</nav>
+		<div class="inner clearfix">
+			<h1><%= link_to 'Due It', root_path %></h1>
+			<nav role="navigation"><%= render 'partials/navigation' %></nav>
+		</div>
 	</header>
 
-	<div id="content">
+	<div id="content" class="wrap">
 		<% flash.each do |key, value| %>
 			<%= content_tag(:div, value, class: "flash #{key}") %>
 		<% end %>
 
 		<%= yield %>
-	</div><!-- /#content -->
 
-	<footer role="contentinfo">
+		<footer role="contentinfo">
 		<p>Built with <a href="http://rubyonrails.org">Ruby on Rails</a></p>
 	</footer>
+	</div><!-- /.wrap -->
 </body>
 </html>
