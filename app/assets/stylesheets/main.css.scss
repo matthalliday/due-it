@@ -1,0 +1,185 @@
+// Layout
+// -------------------------------------------------------------------------- //
+body {
+	font: normal 100% $body;
+	background-color: #e7e7e7;
+	color: #222;
+}
+
+.inner {
+	margin: 0 auto;
+	padding: 0 40px;
+}
+
+.wrap {
+	margin: 0 auto;
+	padding-top: 110px;
+	width: 640px;
+}
+
+header {
+	position: fixed;
+	width: 100%;
+	margin-bottom: 32px;
+	padding: 16px 0;
+	@include box_shadow();
+	background-color: #fff;
+
+	h1 {
+		float: left;
+		margin-bottom: 0;
+
+		a {
+			font-weight: $semi;
+			text-decoration: none;
+			color: #333;
+		}
+	}
+}
+
+nav {
+	float: right;
+
+	ul {
+		margin-top: 0;
+		padding-left: 0;
+		list-style: none;
+
+		&.menu li {
+			margin-left: 24px;
+			font-weight: $regular;
+			font-size: 12px;
+			text-transform: uppercase;
+			color: $primary;
+		}
+
+		&.submenu {
+			margin-top: 4px;
+
+			li {
+				margin-left: 0;
+				margin-right: 12px;
+				font-weight: $semi;
+				font-size: 14px;
+				text-transform: none;
+
+				a {
+					color: $secondary;
+
+					&:hover { color: $primary; }
+				}
+			}
+		}
+	}
+
+	li {
+		float: left;
+		color: #333;
+	}
+
+	a {
+		text-decoration: none;
+		color: $primary;
+	}
+}
+
+footer {
+	margin-top: 40px;
+	padding-bottom: 16px;
+	text-align: right;
+
+	p {
+		margin-bottom: 0;
+		font-size: 14px;
+		color: #333;
+	}
+
+	a {
+		text-decoration: none;
+		border-bottom: 1px solid $primary;
+		color: $primary;
+	}
+}
+
+
+// Projects
+// -------------------------------------------------------------------------- //
+.project {
+	margin-top: 60px;
+	overflow: hidden;
+	@include box_shadow(0, 1px, 5px, rgba(0,0,0,0.25));
+	@include border_radius(6px);
+	background-color: #fff;
+
+	&:first-of-type { margin-top: 0; }
+}
+
+.name {
+	padding: 20px 40px;
+	background-color: $primary;
+
+	h1 {
+		margin-bottom: 0;
+		font-weight: $semi;
+		color: #fff;
+
+		a {
+			text-decoration: none;
+			color: #fff;
+		}
+	}
+}
+
+.info-bar {
+	padding: 10px 40px;
+	font-size: 14px;
+	background-color: $secondary;
+	color: #fff;
+
+	.count {
+		float: left;
+		margin-bottom: 0;
+	}
+
+	.button {
+		float: right;
+		text-decoration: none;
+		color: #fff;
+	}
+}
+
+
+// Tasks
+// -------------------------------------------------------------------------- //
+.task-list {
+	margin: 0;
+	padding: 16px 40px;
+	list-style: none;
+
+	li { padding: 16px 0; }
+
+	h2 {
+		margin-bottom: 8px;
+		padding-bottom: 4px;
+		font-weight: $semi;
+		font-size: 24px;
+		border-bottom: 1px solid #e7e7e7;
+
+		a {
+			text-decoration: none;
+			color: #222;
+		}
+	}
+
+	.meta {
+		p {
+			float: left;
+			margin-right: 20px;
+			margin-bottom: 0;
+			font-weight: $semi;
+			font-size: 11px;
+			text-transform: uppercase;
+			color: #777;
+		}
+	}
+}

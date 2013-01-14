@@ -1,0 +1,40 @@
+// Mixins
+// -------------------------------------------------------------------------- //
+@mixin transition($property: all, $duration: 0.3s) {
+	-webkit-transition: $property $duration ease-in-out;
+	-moz-transition: $property $duration ease-in-out;
+	-o-transition: $property $duration ease-in-out;
+	transition: $property $duration ease-in-out;
+}
+
+@mixin border_radius($radius: 5px) {
+	-webkit-border-radius: $radius;
+	-moz-border-radius: $radius;
+	border-radius: $radius;
+}
+
+@mixin single_border_radius($horz, $vert, $radius: 5px) {
+	-webkit-border-#{$horz}-#{$vert}-radius: $radius;
+	-moz-border-radius-#{$horz}#{$vert}: $radius;
+	border-#{$horz}-#{$vert}-radius: $radius;
+}
+
+@mixin box_shadow($x: 0, $y: 0, $blur: 5px, $color: rgba(0,0,0,0.25)) {
+	-webkit-box-shadow: $x $y $blur $color;
+	-moz-box-shadow: $x $y $blur $color;
+	box-shadow: $x $y $blur $color;
+}
+
+@mixin inset_box_shadow($x: 0, $y: 0, $blur: 5px, $color: rgba(0,0,0,0.25)) {
+	-webkit-box-shadow: inset $x $y $blur $color;
+	-moz-box-shadow: inset $x $y $blur $color;
+	box-shadow: inset $x $y $blur $color;
+}
+
+@function calc_em($target-px, $context: 16px) {
+	@return ($target-px / $context) * 1em;
+}
+
+@function calc_pc($target-px, $context: 1000px) {
+	@return ($target-px / $context) * 100%;
+}
