@@ -16,8 +16,8 @@
 	<div class="field">
 		<%= f.label :due_date %><br />
 		<%= f.date_select :due_date,
-		                  start_year: Time.now.year,
-		                  end_year: Time.now.year + 1,
+		                  start_year: Time.zone.now.year,
+		                  end_year: Time.zone.now.year + 1,
 		                  order: [:month, :day] %>
 	</div>
 	<div class="field">

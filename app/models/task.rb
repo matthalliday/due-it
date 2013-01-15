@@ -10,8 +10,8 @@ class Task < ActiveRecord::Base
 
   scope :complete, -> { where(status: 'complete') }
   scope :incomplete, -> { where(status: 'incomplete') }
-  scope :due_today, -> { where(due_date: (Date.today)) }
-  scope :due_this_week, -> { where(due_date: (Time.now.beginning_of_week)..(Time.now.end_of_week)) }
-  scope :due_this_month, -> { where(due_date: (Time.now.beginning_of_month)..(Time.now.end_of_month)) }
-  scope :overdue, -> { where(due_date: (6.months.ago)..(1.day.ago)) }
+  scope :due_today, -> { where(due_date: Time.zone.now.all_day) }
+  scope :due_this_week, -> { where(due_date: Time.zone.now.all_week(:sunday)) }
+  scope :due_this_month, -> { where(due_date: Time.zone.now.all_month) }
+  scope :overdue, -> { where(due_date: (Time.zone.now.beginning_of_quarter)..(Time.zone.now.yesterday.beginning_of_day)) }
 end

@@ -1,6 +1,6 @@
 <section>
 	<h1><%= @due_window.titleize %></h1>
-	<%= raw "Looks like there's nothing #{@due_window}" if @tasks.empty? %>
+	<%= raw "Looks like there's nothing #{@due_window.humanize.downcase}" if @tasks.empty? %>
 
 	<% @projects.each do |project| %>
 		<article class="project">
@@ -9,7 +9,7 @@
 			</div>
 
 			<div class="info-bar clearfix">
-				<p class="count"><%= pluralize(project.tasks.incomplete.due_today.count, "task #{@due_window.humanize.downcase}", "tasks #{@due_window.humanize.downcase}") %></p>
+				<p class="count"><%= pluralize(project.tasks.incomplete.send(@due_window).count, 'incomplete task', 'incomplete tasks') %></p>
 			</div>
 
 			<ul class="task-list">
