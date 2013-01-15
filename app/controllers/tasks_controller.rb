@@ -59,8 +59,12 @@ class TasksController < ApplicationController
 
   %w(due_today due_this_week due_this_month overdue).each do |due_window|
     define_method "#{due_window}" do
+      @projects = []
+      Project.all.each do |project|
+        @projects.push(project) if project.tasks.incomplete.send(due_window).any?
+      end
       @tasks = Task.incomplete.send(due_window)
-      @due_window = due_window.humanize
+      @due_window = due_window
       render :due_window
     end
   end

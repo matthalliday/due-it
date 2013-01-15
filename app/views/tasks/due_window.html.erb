@@ -1,15 +1,33 @@
-<article>
-	<h1><%= @due_window %></h1>
-	<%= raw "Looks like there's nothing #{@due_window.downcase}" if @tasks.empty? %>
+<section>
+	<h1><%= @due_window.titleize %></h1>
+	<%= raw "Looks like there's nothing #{@due_window}" if @tasks.empty? %>
 
-	<ul>
-		<% @tasks.each do |task| %>
-			<li>
-				<h2><%= link_to task.name, Project.find(task.project_id) %></h2>
-				<p>Estimate: <strong><%= task.estimate %></strong></p>
-				<p>Due: <strong><%= task.due_date.strftime('%B %-d') %></strong></p>
-				<p>Priority: <strong><%= task.priority.titleize %></strong></p>
-			</li>
-		<% end %>
-	</ul>
-</article>
+	<% @projects.each do |project| %>
+		<article class="project">
+			<div class="name">
+				<h1><%= link_to project.name, project %></h1>
+			</div>
+
+			<div class="info-bar clearfix">
+				<p class="count"><%= pluralize(project.tasks.incomplete.due_today.count, "task #{@due_window.humanize.downcase}", "tasks #{@due_window.humanize.downcase}") %></p>
+			</div>
+
+			<ul class="task-list">
+				<% project.tasks.incomplete.send(@due_window).each do |task| %>
+					<li>
+						<h2><%= link_to task.name, [project, task] %></h2>
+						<div class="meta clearfix">
+							<p>Estimate: <%= task.estimate %></p>
+							<p>Due: <%= task.due_date.strftime('%B %-d') %></p>
+							<p>Priority: <%= task.priority.titleize %></p>
+
+							<% if task.status == 'incomplete' %>
+								<%= link_to 'Complete', complete_task_path(project, task), method: :put, class: 'complete' %>
+							<% end %>
+						</div>
+					</li>
+				<% end %>
+			</ul><!-- /.task-list -->
+		</article><!-- /.project -->
+	<% end %>
+</section>

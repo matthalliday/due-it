@@ -1,18 +1,28 @@
-<article>
-	<h1><%= link_to @project.name, @project %> - Completed Tasks</h1>
+<section>
+	<h1>Completed Tasks</h1>
 
-	<ul>
-		<% @tasks.each do |task| %>
-			<li>
-				<h2><%= link_to task.name, [@project, task] %></h2>
-				<div><%= raw task.description %></div>
-				<p>Estimate: <strong><%= task.estimate %></strong></p>
-				<p>Due: <strong><%= task.due_date.strftime('%B %-d') %></strong></p>
-				<p>Priority: <strong><%= task.priority.titleize %></strong></p>
+	<article class="project">
+		<div class="name">
+			<h1><%= link_to @project.name, @project %></h1>
+		</div>
 
-				<%= link_to 'Edit', edit_project_task_path(@project, task) %>
-				<%= link_to 'Remove', [@project, task], method: :delete, confirm: 'Are you sure you want to delete this task?' %>
-			</li>
-		<% end %>
-	</ul>
-</article>
+		<div class="info-bar clearfix">
+			<p class="count"><%= pluralize(@tasks.count, 'completed task', 'completed tasks') %></p>
+		</div>
+
+		<ul class="task-list">
+			<% @tasks.each do |task| %>
+				<li>
+					<h2><%= link_to task.name, [@project, task] %></h2>
+
+					<div class="meta clearfix">
+						<p>Estimate: <%= task.estimate %></p>
+						<p>Due: <%= task.due_date.strftime('%B %-d') %></p>
+						<p>Priority: <%= task.priority.titleize %></p>
+						<%= link_to 'Edit', edit_project_task_path(@project, task), class: 'edit' %>
+					</div>
+				</li>
+			<% end %>
+		</ul><!-- /.task-list -->
+	</article><!-- /.project -->
+</section>
