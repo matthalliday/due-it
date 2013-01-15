@@ -1,17 +1,29 @@
-<section>
-	<h1><%= link_to @project.name, @project %></h1>
+<article class="project">
+	<div class="name">
+		<h1><%= link_to @project.name, @project %></h1>
+	</div>
 
-	<article>
-		<h1><%= @task.name %></h1>
-		<div><%= raw @task.description %></div>
-		<p>Estimate: <strong><%= @task.estimate %></strong></p>
-		<p>Due: <strong><%= @task.due_date.strftime('%B %-d') %></strong></p>
-		<p>Priority: <strong><%= @task.priority.titleize %></strong></p>
+	<div class="info-bar clearfix">
+		<p class="count"><%= pluralize(@project.tasks.incomplete.count, 'incomplete task', 'incomplete tasks') %></p>
+		<%= link_to 'Add Task', new_project_task_path(@project), class: 'button' %>
+	</div>
 
-		<% if @task.status == 'incomplete' %>
-			<%= link_to 'Complete', complete_task_path(@project, @task), method: :put %>
-		<% end %>
-		<%= link_to 'Edit', edit_project_task_path(@project, @task) %>
-		<%= link_to 'Remove', [@project, @task], method: :delete, confirm: 'Are you sure you want to delete this task?' %>
-	</article>
-</section>
+	<ul class="task-list">
+		<li>
+			<h2><%= @task.name %></h2>
+
+			<div class="meta clearfix">
+				<p>Estimate: <%= @task.estimate %></p>
+				<p>Due: <%= @task.due_date.strftime('%B %-d') %></p>
+				<p>Priority: <%= @task.priority.titleize %></p>
+
+				<% if @task.status == 'incomplete' %>
+					<%= link_to 'Complete', complete_task_path(@project, @task), method: :put, class: 'complete' %>
+				<% end %>
+			</div>
+		</li>
+	</ul><!-- /.task-list -->
+</article><!-- /.project -->
+
+<%= link_to 'Edit', edit_project_task_path(@project, @task) %>
+<%= link_to 'Remove', [@project, @task], method: :delete, confirm: 'Are you sure you want to delete this task?' %>

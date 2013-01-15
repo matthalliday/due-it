@@ -3,9 +3,17 @@
 	<%= raw "You don't have any projects &ndash; why not #{link_to 'add one', new_project_path}?" if @projects.empty? %>
 
 	<% @projects.each do |project| %>
-		<article>
-			<h1><%= link_to project.name, project %></h1>
-			<div><%= raw project.description %></div>
-		</article>
+		<article class="project">
+			<div class="name">
+				<h1><%= link_to project.name, project %></h1>
+			</div>
+
+			<div class="info-bar clearfix">
+				<p class="count"><%= pluralize(project.tasks.incomplete.count, 'incomplete task', 'incomplete tasks') %></p>
+				<%= link_to 'Add Task', new_project_task_path(project), class: 'button' %>
+			</div>
+
+			<div class="desc"><%= simple_format project.description %></div>
+		</article><!-- /.project -->
 	<% end %>
 </section>

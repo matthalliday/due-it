@@ -112,6 +112,8 @@ footer {
 	background-color: #fff;
 
 	&:first-of-type { margin-top: 0; }
+
+	.desc { padding: 16px 40px 0; }
 }
 
 .name {
@@ -133,6 +135,7 @@ footer {
 
 .info-bar {
 	padding: 10px 40px;
+	min-height: 16px;
 	font-size: 14px;
 	@include inset_box_shadow(0, 1px, 5px, rgba(0,0,0,1.0));
 	background-color: $secondary;
