@@ -1,5 +1,5 @@
 <section>
-	<h1>Completed Tasks</h1>
+	<h1 class="page-title">Completed Tasks</h1>
 
 	<article class="project">
 		<div class="name">
@@ -19,7 +19,7 @@
 						<p>Estimate: <%= task.estimate %></p>
 						<p>Due: <%= task.due_date.strftime('%B %-d') %></p>
 						<p>Priority: <%= task.priority.titleize %></p>
-						<%= link_to 'Edit', edit_project_task_path(@project, task), class: 'edit' %>
+						<%= link_to 'Edit', edit_project_task_path(@project, task), class: 'task-action edit' %>
 					</div>
 				</li>
 			<% end %>

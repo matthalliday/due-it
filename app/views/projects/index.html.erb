@@ -1,5 +1,5 @@
 <section>
-	<h1>All Projects</h1>
+	<h1 class="page-title">All Projects</h1>
 	<%= raw "You don't have any projects &ndash; why not #{link_to 'add one', new_project_path}?" if @projects.empty? %>
 
 	<% @projects.each do |project| %>

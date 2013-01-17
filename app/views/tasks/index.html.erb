@@ -1,5 +1,5 @@
 <section>
-	<h1>All Tasks</h1>
+	<h1 class="page-title">All Tasks</h1>
 	<%= raw "You don't have any projects &ndash; why not #{link_to 'add one', new_project_path}?" if @projects.empty? %>
 
 	<% @projects.each do |project| %>
@@ -21,7 +21,7 @@
 							<p>Estimate: <%= task.estimate %></p>
 							<p>Due: <%= task.due_date.strftime('%B %-d') %></p>
 							<p>Priority: <%= task.priority.titleize %></p>
-							<%= link_to 'Complete', complete_task_path(project, task), method: :put, class: 'complete' %>
+							<%= link_to 'Complete', complete_task_path(project, task), method: :put, class: 'task-action complete' %>
 						</div>
 					</li>
 				<% end %>

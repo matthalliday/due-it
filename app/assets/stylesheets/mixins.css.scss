@@ -31,6 +31,21 @@
 	box-shadow: inset $x $y $blur $color;
 }
 
+@mixin vertical_gradient($start-color, $end-color) {
+	background-image: linear-gradient(top, $start-color 20%, $end-color 80%);
+	background-image: -o-linear-gradient(top, $start-color 20%, $end-color 80%);
+	background-image: -moz-linear-gradient(top, $start-color 20%, $end-color 80%);
+	background-image: -webkit-linear-gradient(top, $start-color 20%, $end-color 80%);
+	background-image: -ms-linear-gradient(top, $start-color 20%, $end-color 80%);
+	background-image: -webkit-gradient(
+		linear,
+		left top,
+		left bottom,
+		color-stop(0.20, $start-color),
+		color-stop(0.80, $end-color)
+	);
+}
+
 @function calc_em($target-px, $context: 16px) {
 	@return ($target-px / $context) * 1em;
 }

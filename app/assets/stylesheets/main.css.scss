@@ -13,15 +13,15 @@ body {
 
 .wrap {
 	margin: 0 auto;
-	padding-top: 110px;
+	padding-top: 116px;
 	width: 640px;
 }
 
 header {
 	position: fixed;
-	width: 100%;
-	margin-bottom: 32px;
+	z-index: 10;
 	padding: 16px 0;
+	width: 100%;
 	@include box_shadow(0, 1px, 5px, rgba(0,0,0,0.25));
 	background-color: #fff;
 
@@ -33,6 +33,9 @@ header {
 			font-weight: $semi;
 			text-decoration: none;
 			color: #333;
+			@include transition(color, 0.3s);
+
+			&:hover { color: $primary; }
 		}
 	}
 }
@@ -47,7 +50,7 @@ nav {
 
 		&.menu li {
 			margin-left: 24px;
-			font-weight: $regular;
+			font-weight: $semi;
 			font-size: 12px;
 			text-transform: uppercase;
 			color: $primary;
@@ -58,12 +61,13 @@ nav {
 
 			li {
 				margin-left: 0;
-				margin-right: 12px;
+				margin-right: 14px;
 				font-weight: $semi;
 				font-size: 14px;
 				text-transform: none;
 
 				a {
+					@include transition(color, 0.3s);
 					color: $secondary;
 
 					&:hover { color: $primary; }
@@ -101,6 +105,13 @@ footer {
 	}
 }
 
+.page-title {
+	margin-bottom: 20px;
+	padding-left: 40px;
+	font: $semi 26px $body;
+	text-shadow: 0 1px 1px #fff;
+}
+
 
 // Projects
 // -------------------------------------------------------------------------- //
@@ -118,7 +129,7 @@ footer {
 
 .name {
 	padding: 20px 40px;
-	background-color: $primary;
+	@include vertical_gradient($primary, darken($primary, 5%));
 
 	h1 {
 		margin-bottom: 0;
@@ -164,11 +175,9 @@ footer {
 	li { padding: 16px 0; }
 
 	h2 {
-		margin-bottom: 8px;
-		padding-bottom: 4px;
+		margin-bottom: 4px;
 		font-weight: $semi;
 		font-size: 24px;
-		border-bottom: 1px solid #e7e7e7;
 
 		a {
 			text-decoration: none;
@@ -177,9 +186,11 @@ footer {
 	}
 
 	.meta {
+		padding-top: 8px;
 		font-weight: $semi;
 		font-size: 11px;
 		text-transform: uppercase;
+		border-top: 1px solid #e7e7e7;
 
 		p {
 			float: left;
@@ -188,9 +199,7 @@ footer {
 			color: #777;
 		}
 
-		// TODO add a common class for links in meta area
-		a.edit,
-		a.complete {
+		a.task-action {
 			float: right;
 			text-decoration: none;
 			color: #777;

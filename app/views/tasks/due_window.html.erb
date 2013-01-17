@@ -1,5 +1,5 @@
 <section>
-	<h1><%= @due_window.titleize %></h1>
+	<h1 class="page-title"><%= @due_window.titleize %></h1>
 	<%= raw "Looks like there's nothing #{@due_window.humanize.downcase}" if @tasks.empty? %>
 
 	<% @projects.each do |project| %>
@@ -22,7 +22,7 @@
 							<p>Priority: <%= task.priority.titleize %></p>
 
 							<% if task.status == 'incomplete' %>
-								<%= link_to 'Complete', complete_task_path(project, task), method: :put, class: 'complete' %>
+								<%= link_to 'Complete', complete_task_path(project, task), method: :put, class: 'task-action complete' %>
 							<% end %>
 						</div>
 					</li>
