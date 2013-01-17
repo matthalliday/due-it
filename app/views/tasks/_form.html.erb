@@ -2,26 +2,25 @@
 	<%= render 'partials/errors', object: @task %>
 
 	<div class="field">
-		<%= f.label :name %><br />
-		<%= f.text_field :name %>
+		<%= f.label :name, 'Name *' %>
+		<%= f.text_field :name, class: 'name-field' %>
 	</div>
 	<div class="field">
-		<%= f.label :description %><br />
+		<%= f.label :description %>
 		<%= f.text_area :description %>
 	</div>
 	<div class="field">
-		<%= f.label :estimate %><br />
+		<%= f.label :estimate %>
 		<%= f.text_field :estimate %>
 	</div>
 	<div class="field">
-		<%= f.label :due_date %><br />
+		<%= f.label :due_date, 'Due Date *' %>
 		<%= f.date_select :due_date,
-		                  start_year: Time.zone.now.year,
-		                  end_year: Time.zone.now.year + 1,
+		                  default: Time.zone.now.tomorrow,
 		                  order: [:month, :day] %>
 	</div>
 	<div class="field">
-		<%= f.label :priority %><br />
+		<%= f.label :priority, 'Priority *' %>
 		<%= f.select :priority, options_for_select(
 			                        [['Low','low'],
 			                        ['Normal','normal'],
@@ -29,14 +28,13 @@
 			                        'normal') %>
 	</div>
 	<div class="field">
-		<%= f.label :status %><br />
+		<%= f.label :status, 'Status *' %>
 		<%= f.select :status, options_for_select(
 			                        [['Incomplete','incomplete'],
 			                        ['Complete','complete']],
 			                        'incompete') %>
 	</div>
 	<div class="field submit">
-		<br />
 		<%= f.submit %>
 	</div>
 <% end %>

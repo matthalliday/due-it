@@ -112,6 +112,24 @@ footer {
 	text-shadow: 0 1px 1px #fff;
 }
 
+form {
+	padding: 16px 40px;
+
+	.field {
+		margin: 16px 0;
+
+		&.submit { margin-top: 32px; }
+	}
+
+	label {
+		display: block;
+		margin-bottom: 4px;
+	}
+
+	input.name-field { width: 100%; }
+	textarea { width: 100%; }
+}
+
 
 // Projects
 // -------------------------------------------------------------------------- //
@@ -164,7 +182,8 @@ footer {
 	background-color: $secondary;
 	color: #fff;
 
-	.count {
+	.count,
+	.message {
 		float: left;
 		margin-bottom: 0;
 	}
@@ -195,6 +214,12 @@ footer {
 			text-decoration: none;
 			color: #222;
 		}
+	}
+
+	.desc {
+		margin-top: 8px;
+		padding: 8px 0 0;
+		border-top: 1px solid #e7e7e7;
 	}
 
 	.meta {

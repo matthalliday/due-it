@@ -12,6 +12,9 @@
 	<ul class="task-list">
 		<li>
 			<h2><%= @task.name %></h2>
+			<% if @task.description != '' %>
+				<div class="desc"><%= simple_format @task.description %></div>
+			<% end %>
 
 			<div class="meta clearfix">
 				<p>Estimate: <%= @task.estimate %></p>
