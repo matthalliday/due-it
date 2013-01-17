@@ -41,8 +41,25 @@
 		linear,
 		left top,
 		left bottom,
-		color-stop(0.20, $start-color),
-		color-stop(0.80, $end-color)
+		color-stop(20%, $start-color),
+		color-stop(80%, $end-color)
+	);
+}
+
+@mixin horizontal_highlight() {
+	background-image: linear-gradient(to right, rgba(255,255,255,0) 0%,rgba(255,255,255,0.6) 25%, rgba(255,255,255,0.6) 75%, rgba(255,255,255,0) 100%);
+	background-image: -o-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,0.6) 25%, rgba(255,255,255,0.6) 75%, rgba(255,255,255,0) 100%);
+	background-image: -moz-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,0.6) 25%, rgba(255,255,255,0.6) 75%, rgba(255,255,255,0) 100%);
+	background-image: -webkit-linear-gradient(left, rgba(255,255,255,0) 0%,rgba(255,255,255,0.6) 25%,rgba(255,255,255,0.6) 75%,rgba(255,255,255,0) 100%);
+	background-image: -ms-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,0.6) 25%, rgba(255,255,255,0.6) 75%, rgba(255,255,255,0) 100%);
+	background-image: -webkit-gradient(
+		linear,
+		left top,
+		right top,
+		color-stop(0%,rgba(255,255,255,0)),
+		color-stop(25%,rgba(255,255,255,0.6)),
+		color-stop(75%,rgba(255,255,255,0.6)),
+		color-stop(100%,rgba(255,255,255,0))
 	);
 }
 
