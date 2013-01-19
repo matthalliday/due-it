@@ -8,6 +8,8 @@ class Task < ActiveRecord::Base
   validates :name, presence: :true, length: { maximum: 256 }
   validates :priority, presence: :true, inclusion: { in: %w(low normal high) }
 
+  default_scope -> { order('due_date ASC') }
+
   scope :complete, -> { where(status: 'complete') }
   scope :incomplete, -> { where(status: 'incomplete') }
   scope :due_today, -> { where(due_date: Time.zone.now.all_day) }
