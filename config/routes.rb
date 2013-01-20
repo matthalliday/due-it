@@ -6,7 +6,8 @@ DueIt::Application.routes.draw do
   match '/tasks/this-week' => 'tasks#due_this_week', as: 'tasks_this_week'
   match '/tasks/this-month' => 'tasks#due_this_month', as: 'tasks_this_month'
   match '/tasks/overdue' => 'tasks#overdue', as: 'tasks_overdue'
-  match '/projects/:project_id/tasks/:id/complete' => 'tasks#complete', via: :put, as: 'complete_task'
+  match '/projects/:project_id/tasks/:id/complete' => 'tasks#mark_complete', via: :put, as: 'mark_task_complete'
+  match '/projects/:project_id/tasks/:id/incomplete' => 'tasks#mark_incomplete', via: :put, as: 'mark_task_incomplete'
   match '/projects/:project_id/tasks/completed' => 'tasks#completed', via: :get, as: 'completed_tasks'
 
   resources :projects do

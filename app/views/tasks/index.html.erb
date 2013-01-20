@@ -10,7 +10,7 @@
 			</div>
 
 			<div class="info-bar clearfix">
-				<p class="count"><%= pluralize(project.tasks.incomplete.count, 'incomplete task', 'incomplete tasks') %></p>
+				<p class="count"><%= pluralize(project.incomplete_tasks, 'incomplete task', 'incomplete tasks') %></p>
 				<%= link_to 'Add Task', new_project_task_path(project), class: 'button' %>
 			</div>
 
@@ -22,7 +22,7 @@
 							<p>Estimate: <%= task.estimate %></p>
 							<p>Due: <%= task.due_date.strftime('%B %-d') %></p>
 							<p>Priority: <%= task.priority.titleize %></p>
-							<%= link_to 'Complete', complete_task_path(project, task), method: :put, class: 'task-action complete' %>
+							<%= link_to 'Complete', mark_task_complete_path(project, task), method: :put, class: 'task-action complete' %>
 						</div>
 					</li>
 				<% end %>

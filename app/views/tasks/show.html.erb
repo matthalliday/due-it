@@ -5,7 +5,7 @@
 	</div>
 
 	<div class="info-bar clearfix">
-		<p class="count"><%= pluralize(@project.tasks.incomplete.count, 'incomplete task', 'incomplete tasks') %></p>
+		<p class="count"><%= pluralize(@project.incomplete_tasks, 'incomplete task', 'incomplete tasks') %></p>
 		<%= link_to 'Add Task', new_project_task_path(@project), class: 'button' %>
 	</div>
 
@@ -22,7 +22,7 @@
 				<p>Priority: <%= @task.priority.titleize %></p>
 
 				<% if @task.status == 'incomplete' %>
-					<%= link_to 'Complete', complete_task_path(@project, @task), method: :put, class: 'task-action complete' %>
+					<%= link_to 'Complete', mark_task_complete_path(@project, @task), method: :put, class: 'task-action complete' %>
 				<% end %>
 			</div>
 		</li>

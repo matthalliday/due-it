@@ -1,7 +1,7 @@
 class Task < ActiveRecord::Base
   belongs_to :project
 
-  attr_accessible :description, :due_date, :estimate, :name, :priority, :status
+  attr_accessible :description, :due_date, :estimate, :name, :priority
 
   validates :description, length: { maximum: 500 }
   validates :due_date, presence: :true

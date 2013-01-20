@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_filter :get_project, except: [:index, :due_today, :due_this_week, :due_this_month, :overdue]
-  before_filter :get_task, only: [:show, :edit, :update, :destroy, :complete]
+  before_filter :get_task, only: [:show, :edit, :update, :destroy, :mark_complete, :mark_incomplete]
 
   def index
     @projects = []
@@ -19,6 +19,7 @@ class TasksController < ApplicationController
   def create
     @task = @project.tasks.build(params[:task])
     if @task.save
+      Project.increment_counter(:incomplete_tasks, params[:project_id])
       redirect_to @project
       flash[:success] = "Woo hoo! The task was successfully created."
     else
@@ -42,15 +43,25 @@ class TasksController < ApplicationController
 
   def destroy
     @task.destroy
+    Project.decrement_counter(:incomplete_tasks, params[:project_id]) if @task.status == 'incomplete'
     redirect_to @project
     flash[:success] = "Congrats, bro! That task has been deleted."
   end
 
-  def complete
+  def mark_complete
     @task.status = 'complete'
     @task.save
+    Project.decrement_counter(:incomplete_tasks, params[:project_id])
     redirect_to @project
     flash[:success] = "High five, bro! You just completed a task."
+  end
+
+  def mark_incomplete
+    @task.status = 'incomplete'
+    @task.save
+    Project.increment_counter(:incomplete_tasks, params[:project_id])
+    redirect_to @project
+    flash[:success] = "Nice going! The task was successfully updated."
   end
 
   def completed
