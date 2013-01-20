@@ -8,7 +8,7 @@
 		</div>
 
 		<div class="info-bar clearfix">
-			<p class="count"><%= pluralize(@tasks.count, 'completed task', 'completed tasks') %></p>
+			<p class="count"><%= pluralize(@project.complete_tasks, 'completed task', 'completed tasks') %></p>
 		</div>
 
 		<ul class="task-list">

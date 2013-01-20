@@ -43,7 +43,11 @@ class TasksController < ApplicationController
 
   def destroy
     @task.destroy
-    Project.decrement_counter(:incomplete_tasks, params[:project_id]) if @task.status == 'incomplete'
+    if @task.status == 'complete'
+      Project.decrement_counter(:complete_tasks, params[:project_id])
+    else
+      Project.decrement_counter(:incomplete_tasks, params[:project_id])
+    end
     redirect_to @project
     flash[:success] = "Congrats, bro! That task has been deleted."
   end
@@ -51,6 +55,7 @@ class TasksController < ApplicationController
   def mark_complete
     @task.status = 'complete'
     @task.save
+    Project.increment_counter(:complete_tasks, params[:project_id])
     Project.decrement_counter(:incomplete_tasks, params[:project_id])
     redirect_to @project
     flash[:success] = "High five, bro! You just completed a task."
@@ -60,6 +65,7 @@ class TasksController < ApplicationController
     @task.status = 'incomplete'
     @task.save
     Project.increment_counter(:incomplete_tasks, params[:project_id])
+    Project.decrement_counter(:complete_tasks, params[:project_id])
     redirect_to @project
     flash[:success] = "Nice going! The task was successfully updated."
   end
