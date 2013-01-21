@@ -121,12 +121,36 @@ form {
 		&.submit { margin-top: 32px; }
 	}
 
+	.field-wrap { overflow: hidden; }
+
 	label {
 		display: block;
 		margin-bottom: 4px;
 	}
 
-	input.name-field { width: 100%; }
+	.task-name,
+	.project-name  {
+		input[type="text"] { width: 100%; }
+	}
+
+	.estimate {
+		float: left;
+		width: 200px;
+
+		input[type="text"] { width: 194px; }
+	}
+
+	.due-date {
+		float: left;
+		margin-left: 40px;
+		width: 160px;
+	}
+
+	.priority {
+		float: right;
+		width: 120px;
+	}
+
 	textarea { width: 100%; }
 }
 
