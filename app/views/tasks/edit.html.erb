@@ -9,6 +9,7 @@
 
 		<div class="info-bar clearfix">
 			<p class="message">Fields with an asterisk are required</p>
+			<%= link_to 'Remove Task', [@project, @task], method: :delete, confirm: 'Delete this task?', class: 'button' %>
 		</div>
 
 		<%= render 'form' %>

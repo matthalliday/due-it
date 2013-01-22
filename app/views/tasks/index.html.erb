@@ -1,6 +1,8 @@
 <section>
 	<h1 class="page-title">All Tasks</h1>
-	<%= raw "You don't have any projects &ndash; why not #{link_to 'add one', new_project_path}?" if @projects.empty? %>
+	<% if @projects.empty? %>
+		<%= content_tag(:p, "You don't have any projects &ndash; why not #{link_to 'add one', new_project_path}?", class: 'page-message') %>
+	<% end %>
 
 	<% @projects.each do |project| %>
 		<article class="project">

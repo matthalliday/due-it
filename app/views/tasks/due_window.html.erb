@@ -1,6 +1,8 @@
 <section>
 	<h1 class="page-title"><%= @due_window.titleize %></h1>
-	<%= raw "Looks like there's nothing #{@due_window.humanize.downcase}" if @tasks.empty? %>
+	<% if @tasks.empty? %>
+		<%= content_tag(:p, "Looks like there's nothing #{@due_window.humanize.downcase}!", class: 'page-message') %>
+	<% end %>
 
 	<% @projects.each do |project| %>
 		<article class="project">
@@ -11,6 +13,7 @@
 
 			<div class="info-bar clearfix">
 				<p class="count"><%= pluralize(project.incomplete_tasks, 'incomplete task', 'incomplete tasks') %></p>
+				<%= link_to 'Add Task', new_project_task_path(project), class: 'button' %>
 			</div>
 
 			<ul class="task-list">
