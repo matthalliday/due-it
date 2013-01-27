@@ -7,6 +7,11 @@ class TasksController < ApplicationController
     Project.all.each do |project|
       @projects.push(project) if project.tasks.incomplete.any?
     end
+
+    respond_to do |format|
+      format.html
+      format.json { render json: Task.all }
+    end
   end
 
   def show
