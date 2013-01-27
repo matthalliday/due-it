@@ -3,7 +3,8 @@
 
 project = Project.new
 project.assign_attributes({name: 'Sample Project',
-                           description: 'A sample project for demo purposes'},
+                           description: 'A sample project for demo purposes',
+                           incomplete_tasks: 2},
                            without_protection: true)
 project.save
 
