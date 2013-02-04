@@ -1,14 +1,14 @@
 DueIt::Application.routes.draw do
   root to: 'tasks#index'
 
-  match '/tasks' => 'tasks#index', as: 'all_tasks'
-  match '/tasks/today' => 'tasks#due_today', as: 'tasks_today'
-  match '/tasks/this-week' => 'tasks#due_this_week', as: 'tasks_this_week'
-  match '/tasks/this-month' => 'tasks#due_this_month', as: 'tasks_this_month'
-  match '/tasks/overdue' => 'tasks#overdue', as: 'tasks_overdue'
-  match '/projects/:project_id/tasks/:id/complete' => 'tasks#mark_complete', via: :put, as: 'mark_task_complete'
-  match '/projects/:project_id/tasks/:id/incomplete' => 'tasks#mark_incomplete', via: :put, as: 'mark_task_incomplete'
-  match '/projects/:project_id/tasks/completed' => 'tasks#completed', via: :get, as: 'completed_tasks'
+  get '/tasks' => 'tasks#index', as: 'all_tasks'
+  get '/tasks/today' => 'tasks#due_today', as: 'tasks_today'
+  get '/tasks/this-week' => 'tasks#due_this_week', as: 'tasks_this_week'
+  get '/tasks/this-month' => 'tasks#due_this_month', as: 'tasks_this_month'
+  get '/tasks/overdue' => 'tasks#overdue', as: 'tasks_overdue'
+  put '/projects/:project_id/tasks/:id/complete' => 'tasks#mark_complete', as: 'mark_task_complete'
+  put '/projects/:project_id/tasks/:id/incomplete' => 'tasks#mark_incomplete', as: 'mark_task_incomplete'
+  get '/projects/:project_id/tasks/completed' => 'tasks#completed', as: 'completed_tasks'
 
   resources :projects do
     resources :tasks
