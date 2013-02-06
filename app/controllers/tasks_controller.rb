@@ -23,9 +23,9 @@ class TasksController < ApplicationController
     if @task.save
       Project.increment_counter(:incomplete_tasks, params[:project_id])
       redirect_to @project
-      flash[:success] = "Woo hoo! The task was successfully created."
+      flash[:success] = "The task has been added to the project."
     else
-      flash[:error] = "Dang! Fix the errors below and try again."
+      flash[:error] = "Fix the errors below and try again."
       render :new
     end
   end
@@ -40,9 +40,9 @@ class TasksController < ApplicationController
     @task = @project.tasks.find(params[:id])
     if @task.update_attributes(params[:task])
       redirect_to @project
-      flash[:success] = "Nice going! The task was successfully updated."
+      flash[:success] = "The task details have been updated."
     else
-      flash[:error] = "Dang! Fix the errors below and try again."
+      flash[:error] = "Fix the errors below and try again."
       render :edit
     end
   end
@@ -57,7 +57,7 @@ class TasksController < ApplicationController
       Project.decrement_counter(:incomplete_tasks, params[:project_id])
     end
     redirect_to @project
-    flash[:success] = "Congrats, bro! That task has been deleted."
+    flash[:success] = "The task has been removed from the project."
   end
 
   def mark_complete
@@ -67,7 +67,7 @@ class TasksController < ApplicationController
     Project.increment_counter(:complete_tasks, params[:project_id])
     Project.decrement_counter(:incomplete_tasks, params[:project_id])
     redirect_to @project
-    flash[:success] = "High five, bro! You just completed a task."
+    flash[:success] = "The task has been marked as complete."
   end
 
   def mark_incomplete
@@ -77,7 +77,7 @@ class TasksController < ApplicationController
     Project.increment_counter(:incomplete_tasks, params[:project_id])
     Project.decrement_counter(:complete_tasks, params[:project_id])
     redirect_to @project
-    flash[:success] = "Nice going! The task was successfully updated."
+    flash[:success] = "The task has been marked as incomplete."
   end
 
   def completed

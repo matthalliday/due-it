@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   def index
-    @projects = Project.all
+    @projects = Project.order('name ASC').all
     respond_to do |format|
       format.html
       format.json { render json: @projects }
@@ -20,9 +20,9 @@ class ProjectsController < ApplicationController
     @project = Project.new(params[:project])
     if @project.save
       redirect_to @project
-      flash[:success] = "Woo hoo! The project was successfully created."
+      flash[:success] = "The project has been created."
     else
-      flash[:error] = "Dang! Fix the errors below and try again."
+      flash[:error] = "Fix the errors below and try again."
       render :new
     end
   end
@@ -35,9 +35,9 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     if @project.update_attributes(params[:project])
       redirect_to @project
-      flash[:success] = "Nice going! The project was successfully updated."
+      flash[:success] = "The project details have been updated."
     else
-      flash[:error] = "Dang! Fix the errors below and try again."
+      flash[:error] = "Fix the errors below and try again."
       render :edit
     end
   end
@@ -45,7 +45,7 @@ class ProjectsController < ApplicationController
   def destroy
     @project = Project.find(params[:id])
     @project.destroy
-    flash[:success] = "Congrats, bro! That project has been deleted."
+    flash[:success] = "The project has been removed."
     redirect_to root_path
   end
 end
