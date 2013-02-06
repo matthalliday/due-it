@@ -1,6 +1,4 @@
 class ProjectsController < ApplicationController
-  before_filter :get_project, except: [:index, :new, :create]
-
   def index
     @projects = Project.all
 
@@ -11,6 +9,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    @project = Project.find(params[:id])
     @incomplete = @project.tasks.incomplete
   end
 
@@ -30,9 +29,11 @@ class ProjectsController < ApplicationController
   end
 
   def edit
+    @project = Project.find(params[:id])
   end
 
   def update
+    @project = Project.find(params[:id])
     if @project.update_attributes(params[:project])
       redirect_to @project
       flash[:success] = "Nice going! The project was successfully updated."
@@ -43,14 +44,9 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
+    @project = Project.find(params[:id])
     @project.destroy
     flash[:success] = "Congrats, bro! That project has been deleted."
     redirect_to root_path
-  end
-
-  private
-
-  def get_project
-    @project = Project.find(params[:id])
   end
 end

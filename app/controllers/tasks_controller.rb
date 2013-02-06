@@ -1,7 +1,4 @@
 class TasksController < ApplicationController
-  before_filter :get_project, except: [:index, :due_today, :due_this_week, :due_this_month, :overdue]
-  before_filter :get_task, only: [:show, :edit, :update, :destroy, :mark_complete, :mark_incomplete]
-
   def index
     @projects = []
     Project.all.each do |project|
@@ -15,13 +12,17 @@ class TasksController < ApplicationController
   end
 
   def show
+    @project = Project.find(params[:project_id])
+    @task = @project.tasks.find(params[:id])
   end
 
   def new
+    @project = Project.find(params[:project_id])
     @task = @project.tasks.build
   end
 
   def create
+    @project = Project.find(params[:project_id])
     @task = @project.tasks.build(params[:task])
     if @task.save
       Project.increment_counter(:incomplete_tasks, params[:project_id])
@@ -34,9 +35,13 @@ class TasksController < ApplicationController
   end
 
   def edit
+    @project = Project.find(params[:project_id])
+    @task = @project.tasks.find(params[:id])
   end
 
   def update
+    @project = Project.find(params[:project_id])
+    @task = @project.tasks.find(params[:id])
     if @task.update_attributes(params[:task])
       redirect_to [@project, @task]
       flash[:success] = "Nice going! The task was successfully updated."
@@ -47,6 +52,8 @@ class TasksController < ApplicationController
   end
 
   def destroy
+    @project = Project.find(params[:project_id])
+    @task = @project.tasks.find(params[:id])
     @task.destroy
     if @task.status == 'complete'
       Project.decrement_counter(:complete_tasks, params[:project_id])
@@ -58,6 +65,8 @@ class TasksController < ApplicationController
   end
 
   def mark_complete
+    @project = Project.find(params[:project_id])
+    @task = @project.tasks.find(params[:id])
     @task.status = 'complete'
     @task.save
     Project.increment_counter(:complete_tasks, params[:project_id])
@@ -67,6 +76,8 @@ class TasksController < ApplicationController
   end
 
   def mark_incomplete
+    @project = Project.find(params[:project_id])
+    @task = @project.tasks.find(params[:id])
     @task.status = 'incomplete'
     @task.save
     Project.increment_counter(:incomplete_tasks, params[:project_id])
@@ -76,6 +87,7 @@ class TasksController < ApplicationController
   end
 
   def completed
+    @project = Project.find(params[:project_id])
     @tasks = @project.tasks.complete
   end
 
@@ -89,15 +101,5 @@ class TasksController < ApplicationController
       @due_window = due_window
       render :due_window
     end
-  end
-
-  private
-
-  def get_project
-    @project = Project.find(params[:project_id])
-  end
-
-  def get_task
-    @task = @project.tasks.find(params[:id])
   end
 end
