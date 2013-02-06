@@ -1,10 +1,6 @@
 class TasksController < ApplicationController
   def index
-    @projects = []
-    Project.all.each do |project|
-      @projects.push(project) if project.tasks.incomplete.any?
-    end
-
+    @projects = Project.includes(:tasks).where('tasks.status = ?', 'incomplete')
     respond_to do |format|
       format.html
       format.json { render json: Task.all }
@@ -43,7 +39,7 @@ class TasksController < ApplicationController
     @project = Project.find(params[:project_id])
     @task = @project.tasks.find(params[:id])
     if @task.update_attributes(params[:task])
-      redirect_to [@project, @task]
+      redirect_to @project
       flash[:success] = "Nice going! The task was successfully updated."
     else
       flash[:error] = "Dang! Fix the errors below and try again."
@@ -67,8 +63,7 @@ class TasksController < ApplicationController
   def mark_complete
     @project = Project.find(params[:project_id])
     @task = @project.tasks.find(params[:id])
-    @task.status = 'complete'
-    @task.save
+    @task.update_attribute(:status, 'complete')
     Project.increment_counter(:complete_tasks, params[:project_id])
     Project.decrement_counter(:incomplete_tasks, params[:project_id])
     redirect_to @project
@@ -78,8 +73,7 @@ class TasksController < ApplicationController
   def mark_incomplete
     @project = Project.find(params[:project_id])
     @task = @project.tasks.find(params[:id])
-    @task.status = 'incomplete'
-    @task.save
+    @task.update_attribute(:status, 'incomplete')
     Project.increment_counter(:incomplete_tasks, params[:project_id])
     Project.decrement_counter(:complete_tasks, params[:project_id])
     redirect_to @project
