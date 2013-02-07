@@ -20,14 +20,6 @@
 			                  default: Time.zone.now.tomorrow,
 			                  order: [:month, :day] %>
 		</div>
-		<div class="field priority">
-			<%= f.label :priority, 'Priority *' %>
-			<%= f.select :priority, options_for_select(
-				                        [['Low','low'],
-				                        ['Normal','normal'],
-				                        ['High','high']],
-				                        'normal') %>
-		</div>
 	</div>
 	<div class="field submit">
 		<%= f.submit %>

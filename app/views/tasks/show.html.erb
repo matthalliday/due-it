@@ -17,9 +17,8 @@
 			<% end %>
 
 			<div class="meta clearfix">
-				<p>Estimate: <%= @task.estimate %></p>
-				<p>Due: <%= @task.due_date.strftime('%B %-d') %></p>
-				<p>Priority: <%= @task.priority.titleize %></p>
+				<p>Estimated <%= @task.estimate %></p>
+				<p>Due on <%= @task.due_date.strftime('%B %-d') %></p>
 
 				<% if @task.status == 'incomplete' %>
 					<%= link_to 'Complete', mark_task_complete_path(@project, @task), method: :put, class: 'task-action complete' %>

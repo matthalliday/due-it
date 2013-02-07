@@ -12,7 +12,6 @@ task1 = Task.new
 task1.assign_attributes({project_id: 1,
                          name: 'Your first task',
                          description: 'A sample task for demo purposes',
-                         priority: 'normal',
                          estimate: '5 minutes',
                          due_date: 30.days.from_now},
                          without_protection: :true)
@@ -22,7 +21,6 @@ task2 = Task.new
 task2.assign_attributes({project_id: 1,
                          name: 'Your second task',
                          description: 'Another sample task for demo purposes',
-                         priority: 'high',
                          estimate: '2 days',
                          due_date: 4.days.from_now},
                          without_protection: :true)

@@ -140,22 +140,12 @@ form {
 
 	.estimate {
 		float: left;
-		width: 200px;
+		margin-right: 40px;
 
 		input[type="text"] { width: 194px; }
 	}
 
-	.due-date {
-		float: left;
-		margin-left: 40px;
-		width: 160px;
-	}
-
-	.priority {
-		float: right;
-		width: 120px;
-	}
-
+	.due-date { float: left; }
 	textarea { width: 100%; }
 }
 
