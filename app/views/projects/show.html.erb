@@ -10,7 +10,7 @@
 	</div>
 
 	<ul class="task-list">
-		<% @incomplete.each do |task| %>
+		<% @project.tasks.each do |task| %>
 			<li>
 				<h2><%= link_to task.name, [@project, task] %></h2>
 				<div class="meta clearfix">

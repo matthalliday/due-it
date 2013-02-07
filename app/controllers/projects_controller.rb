@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   def index
-    @projects = Project.order('name ASC').all
+    @projects = Project.order('name ASC')
     respond_to do |format|
       format.html
       format.json { render json: @projects }
@@ -8,8 +8,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @project = Project.find(params[:id])
-    @incomplete = @project.tasks.incomplete
+    @project = Project.includes(:tasks).where('tasks.status = ?', 'incomplete').find(params[:id])
   end
 
   def new
