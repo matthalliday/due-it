@@ -8,7 +8,8 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @project = Project.includes(:tasks).where('tasks.status = ?', 'incomplete').find(params[:id])
+    @project = Project.find(params[:id])
+    @tasks = @project.tasks.incomplete
   end
 
   def new
