@@ -1,10 +1,9 @@
 class ProjectsController < ApplicationController
+  respond_to :html, :json, :xml
+
   def index
     @projects = Project.order('name ASC')
-    respond_to do |format|
-      format.html
-      format.json { render json: @projects }
-    end
+    respond_with(@projects)
   end
 
   def show

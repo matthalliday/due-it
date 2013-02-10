@@ -1,10 +1,9 @@
 class TasksController < ApplicationController
+  respond_to :html, :json, :xml
+
   def index
     @projects = Project.includes(:tasks).where('tasks.status = ?', 'incomplete')
-    respond_to do |format|
-      format.html
-      format.json { render json: Task.all }
-    end
+    respond_with(Task.all)
   end
 
   def show
