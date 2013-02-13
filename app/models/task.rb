@@ -7,7 +7,7 @@ class Task < ActiveRecord::Base
   validates :due_date, presence: :true
   validates :name, presence: :true, length: { maximum: 256 }
 
-  default_scope -> { order('due_date ASC') }
+  default_scope -> { order('tasks.due_date ASC') }
 
   scope :complete, -> { where(status: 'complete') }
   scope :incomplete, -> { where(status: 'incomplete') }

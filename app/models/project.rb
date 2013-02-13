@@ -3,6 +3,8 @@ class Project < ActiveRecord::Base
 
   attr_accessible :description, :name
 
+  default_scope -> { order('projects.name ASC') }
+
   validates :description, length: { maximum: 500 }
   validates :name, presence: :true, uniqueness: :true, length: { in: 2..64 }
 

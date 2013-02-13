@@ -2,8 +2,8 @@ class TasksController < ApplicationController
   respond_to :html, :json, :xml
 
   def index
-    @projects = Project.includes(:tasks).where('tasks.status = ?', 'incomplete')
-    respond_with(Task.all)
+    @projects = Project.includes(:tasks).where('tasks.status = ?', 'incomplete').order('tasks.due_date ASC')
+    respond_with Task.all
   end
 
   def show

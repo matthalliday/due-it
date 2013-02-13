@@ -2,8 +2,8 @@ class ProjectsController < ApplicationController
   respond_to :html, :json, :xml
 
   def index
-    @projects = Project.order('name ASC')
-    respond_with(@projects)
+    @projects = Project.all
+    respond_with @projects
   end
 
   def show
