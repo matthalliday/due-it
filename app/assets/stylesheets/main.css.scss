@@ -123,6 +123,11 @@ form {
 	.field {
 		margin: 16px 0;
 
+		&.checkbox label {
+			display: inline-block;
+			padding-left: 2px;
+		}
+
 		&.submit { margin-top: 32px; }
 	}
 

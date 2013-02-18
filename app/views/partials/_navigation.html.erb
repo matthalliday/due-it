@@ -16,4 +16,16 @@
 			<li><%= link_to 'Add New', new_project_path %></li>
 		</ul>
 	</li>
+	<li>
+		<span>Account</span>
+		<ul class="submenu">
+			<% if current_user %>
+				<li><%= link_to current_user.username, user_path(current_user) %></li>
+				<li><%= link_to 'Log Out', log_out_path %></a></li>
+			<% else %>
+				<li><%= link_to 'Log In', log_in_path %></a></li>
+				<li><%= link_to 'Sign Up', sign_up_path %></li>
+			<% end %>
+		</ul>
+	</li>
 </ul>

@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+  before_filter :require_login
   respond_to :html, :json, :xml
 
   def index
