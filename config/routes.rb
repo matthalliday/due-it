@@ -15,6 +15,7 @@ DueIt::Application.routes.draw do
 
   resources :users
   resources :sessions
+  resources :password_resets
   resources :projects do
     resources :tasks
   end
