@@ -21,10 +21,9 @@ class TasksController < ApplicationController
     @task = @project.tasks.build(params[:task])
     if @task.save
       Project.increment_counter(:incomplete_tasks, params[:project_id])
-      redirect_to @project
-      flash[:success] = "The task has been added to the project."
+      redirect_to @project, :notice => "The task has been added to the project."
     else
-      flash[:error] = "Fix the errors below and try again."
+      flash.now[:alert] = "Fix the errors below and try again."
       render :new
     end
   end
@@ -38,10 +37,9 @@ class TasksController < ApplicationController
     @project = Project.find(params[:project_id])
     @task = @project.tasks.find(params[:id])
     if @task.update_attributes(params[:task])
-      redirect_to @project
-      flash[:success] = "The task details have been updated."
+      redirect_to @project, :notice => "The task details have been updated."
     else
-      flash[:error] = "Fix the errors below and try again."
+      flash.now[:alert] = "Fix the errors below and try again."
       render :edit
     end
   end
@@ -55,8 +53,7 @@ class TasksController < ApplicationController
     else
       Project.decrement_counter(:incomplete_tasks, params[:project_id])
     end
-    redirect_to @project
-    flash[:success] = "The task has been removed from the project."
+    redirect_to @project, :notice => "The task has been removed from the project."
   end
 
   def mark_complete
@@ -65,8 +62,7 @@ class TasksController < ApplicationController
     @task.update_attribute(:status, 'complete')
     Project.increment_counter(:complete_tasks, params[:project_id])
     Project.decrement_counter(:incomplete_tasks, params[:project_id])
-    redirect_to @project
-    flash[:success] = "The task has been marked as complete."
+    redirect_to @project, :notice => "The task has been marked as complete."
   end
 
   def mark_incomplete
@@ -75,8 +71,7 @@ class TasksController < ApplicationController
     @task.update_attribute(:status, 'incomplete')
     Project.increment_counter(:incomplete_tasks, params[:project_id])
     Project.decrement_counter(:complete_tasks, params[:project_id])
-    redirect_to @project
-    flash[:success] = "The task has been marked as incomplete."
+    redirect_to @project, :notice => "The task has been marked as incomplete."
   end
 
   def completed
