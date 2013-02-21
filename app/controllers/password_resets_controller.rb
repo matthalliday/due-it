@@ -21,6 +21,7 @@ class PasswordResetsController < ApplicationController
     not_authenticated if !@user
     @user.password_confirmation = params[:user][:password_confirmation]
     if @user.change_password!(params[:user][:password])
+      # TODO log in user after password change
       redirect_to root_url
       flash[:success] = "Password was successfully updated"
     else
