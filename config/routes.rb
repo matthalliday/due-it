@@ -9,7 +9,13 @@ DueIt::Application.routes.draw do
   put '/projects/:project_id/tasks/:id/complete' => 'tasks#mark_complete', as: 'mark_task_complete'
   put '/projects/:project_id/tasks/:id/incomplete' => 'tasks#mark_incomplete', as: 'mark_task_incomplete'
   get '/projects/:project_id/tasks/completed' => 'tasks#completed', as: 'completed_tasks'
+  get 'log-out' => 'sessions#destroy', as: 'log_out'
+  get 'log-in' => 'sessions#new', as: 'log_in'
+  get 'sign-up' => 'users#new', as: 'sign_up'
 
+  resources :users
+  resources :sessions
+  resources :password_resets
   resources :projects do
     resources :tasks
   end
