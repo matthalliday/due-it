@@ -3,21 +3,21 @@ class ProjectsController < ApplicationController
   respond_to :html, :json, :xml
 
   def index
-    @projects = Project.all
+    @projects = current_user.projects
     respond_with @projects
   end
 
   def show
-    @project = Project.find(params[:id])
+    @project = current_user.projects.find(params[:id])
     @tasks = @project.tasks.incomplete
   end
 
   def new
-    @project = Project.new
+    @project = current_user.projects.build
   end
 
   def create
-    @project = Project.new(params[:project])
+    @project = current_user.projects.build(params[:project])
     if @project.save
       redirect_to @project
       flash[:success] = "The project has been created."
@@ -28,11 +28,11 @@ class ProjectsController < ApplicationController
   end
 
   def edit
-    @project = Project.find(params[:id])
+    @project = current_user.projects.find(params[:id])
   end
 
   def update
-    @project = Project.find(params[:id])
+    @project = current_user.projects.find(params[:id])
     if @project.update_attributes(params[:project])
       redirect_to @project
       flash[:success] = "The project details have been updated."
@@ -43,7 +43,7 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
-    @project = Project.find(params[:id])
+    @project = current_user.projects.find(params[:id])
     @project.destroy
     flash[:success] = "The project has been removed."
     redirect_to root_path
