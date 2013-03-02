@@ -7,7 +7,7 @@ class Project < ActiveRecord::Base
   default_scope -> { order('projects.name ASC') }
 
   validates :description, length: { maximum: 500 }
-  validates :name, presence: :true, uniqueness: { scope: :user_id }, length: { in: 2..64 }
+  validates :name, presence: :true, uniqueness: { scope: :user_id, case_sensitive: false }, length: { in: 2..64 }
 
   def to_param
     [id, name.parameterize].join('-')
