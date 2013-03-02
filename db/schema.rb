@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130301024141) do
+ActiveRecord::Schema.define(:version => 20130302011923) do
 
   create_table "projects", :force => true do |t|
     t.string   "name"
@@ -46,8 +46,12 @@ ActiveRecord::Schema.define(:version => 20130301024141) do
     t.string   "reset_password_token"
     t.datetime "reset_password_token_expires_at"
     t.datetime "reset_password_email_sent_at"
+    t.string   "activation_state"
+    t.string   "activation_code"
+    t.datetime "activation_code_expires_at"
   end
 
+  add_index "users", ["activation_code"], :name => "index_users_on_activation_code"
   add_index "users", ["remember_me_token"], :name => "index_users_on_remember_me_token"
 
 end
