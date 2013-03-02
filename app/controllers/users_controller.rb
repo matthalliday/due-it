@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def show
-    @user = User.find(current_user.id)
+    @user = current_user
   end
 
   def new
@@ -10,11 +10,18 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-      login(params[:user][:username], params[:user][:password], 1)
-      redirect_to root_url
-      flash[:success] = "Sign up successful!"
+      redirect_to log_in_path, notice: "Sign up successful! Check your email for activation instructions."
     else
       render :new
+    end
+  end
+
+  def activate
+    if @user = User.load_from_activation_token(params[:id])
+      @user.activate!
+      redirect_to log_in_path, notice: "User was successfully activated."
+    else
+      not_authenticated
     end
   end
 end
