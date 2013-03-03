@@ -4,7 +4,7 @@ class TasksController < ApplicationController
 
   def index
     @projects = current_user.projects.includes(:tasks).where('tasks.status = ?', 'incomplete').order('tasks.due_date ASC')
-    respond_with Task.all
+    respond_with current_user.tasks
   end
 
   def show
