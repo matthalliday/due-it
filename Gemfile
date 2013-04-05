@@ -14,3 +14,4 @@ end
 gem 'jquery-rails'
 gem 'newrelic_rpm'
 gem 'sorcery'
+gem 'turbolinks'

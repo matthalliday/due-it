@@ -13,4 +13,5 @@
 //= require modernizr.custom.41882
 //= require jquery
 //= require jquery_ujs
+//= require turbolinks
 //= require_tree .
