@@ -65,6 +65,9 @@ module DueIt
       :authentication       => 'plain',
       :enable_starttls_auto => true }
 
+    # Set default host for mailer views
+    config.action_mailer.default_url_options = { host: "fathomless-beyond-2022.herokuapp.com" }
+
     # Enable the asset pipeline
     config.assets.enabled = true
 

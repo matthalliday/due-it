@@ -12,7 +12,7 @@ DueIt::Application.routes.draw do
   get '/log-out' => 'sessions#destroy', as: 'log_out'
   get '/log-in' => 'sessions#new', as: 'log_in'
   get '/sign-up' => 'users#new', as: 'sign_up'
-  get '/users/:id/activate' => 'users#activate'
+  get '/users/:id/activate' => 'users#activate', as: 'activate_user'
 
   resources :users
   resources :sessions
