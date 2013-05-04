@@ -1,31 +1,36 @@
 <ul class="menu">
-	<li>
-		<span>Tasks</span>
-		<ul class="submenu">
-			<li><%= link_to 'All', all_tasks_path %></li>
-			<li><%= link_to 'Today', tasks_today_path %></li>
-			<li><%= link_to 'This Week', tasks_this_week_path %></li>
-			<li><%= link_to 'This Month', tasks_this_month_path %></li>
-			<li><%= link_to 'Overdue', tasks_overdue_path %></li>
-		</ul>
-	</li>
-	<li>
-		<span>Projects</span>
-		<ul class="submenu">
-			<li><%= link_to 'All', projects_path %></li>
-			<li><%= link_to 'Add New', new_project_path %></li>
-		</ul>
-	</li>
-	<li>
-		<span>Account</span>
-		<ul class="submenu">
-			<% if current_user %>
+	<% if current_user %>
+		<li>
+			<span>Tasks</span>
+			<ul class="submenu">
+				<li><%= link_to 'All', all_tasks_path %></li>
+				<li><%= link_to 'Today', tasks_today_path %></li>
+				<li><%= link_to 'This Week', tasks_this_week_path %></li>
+				<li><%= link_to 'This Month', tasks_this_month_path %></li>
+				<li><%= link_to 'Overdue', tasks_overdue_path %></li>
+			</ul>
+		</li>
+		<li>
+			<span>Projects</span>
+			<ul class="submenu">
+				<li><%= link_to 'All', projects_path %></li>
+				<li><%= link_to 'Add New', new_project_path %></li>
+			</ul>
+		</li>
+		<li>
+			<span>Account</span>
+			<ul class="submenu">
 				<li><%= link_to current_user.username, user_path(current_user) %></li>
 				<li><%= link_to 'Log Out', log_out_path %></li>
-			<% else %>
+			</ul>
+		</li>
+	<% else %>
+		<li>
+			<span>Account</span>
+			<ul class="submenu">
 				<li><%= link_to 'Log In', log_in_path %></a></li>
 				<li><%= link_to 'Sign Up', sign_up_path %></li>
-			<% end %>
-		</ul>
-	</li>
+			</ul>
+		</li>
+	<% end %>
 </ul>
