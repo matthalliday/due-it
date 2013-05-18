@@ -57,16 +57,16 @@ module DueIt
     # Send email through Gmail
     config.action_mailer.delivery_method = :smtp
     config.action_mailer.smtp_settings = {
-      :address              => "smtp.gmail.com",
+      :address              => 'smtp.gmail.com',
       :port                 => 587,
-      :domain               => "matthalliday.ca",
-      :user_name            => ENV["GMAIL_USERNAME"],
-      :password             => ENV["GMAIL_PASSWORD"],
+      :domain               => ENV['APP_URL'],
+      :user_name            => ENV['GMAIL_USERNAME'],
+      :password             => ENV['GMAIL_PASSWORD'],
       :authentication       => 'plain',
       :enable_starttls_auto => true }
 
     # Set default host for mailer views
-    config.action_mailer.default_url_options = { host: "fathomless-beyond-2022.herokuapp.com" }
+    config.action_mailer.default_url_options = { host: ENV['APP_URL'] }
 
     # Enable the asset pipeline
     config.assets.enabled = true
