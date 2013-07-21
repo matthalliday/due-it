@@ -35,4 +35,15 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = "random"
+
+  config.expect_with :rspec do |c|
+    # Disable the `expect` syntax
+    # c.syntax = :should
+
+    # Disable the `should` syntax
+    c.syntax = :expect
+
+    # Explicitly enable both
+    # c.syntax = [:should, :expect]
+  end
 end

@@ -15,14 +15,14 @@ describe Project do
   it { should_not allow_mass_assignment_of(:user_id) }
 
   it "should include id and project name in URL param" do
-    project = Project.create!(id: 1, name: 'Test Project')
-    project.to_param.should == '1-test-project'
+    project = Project.create(id: 1, name: 'Test Project')
+    expect(project.to_param).to eq '1-test-project'
   end
 
   it "should be ordered alphabetically by default" do
-    project1 = Project.create!(name: 'Interesting Project')
-    project2 = Project.create!(name: '1st Rails Project')
-    project3 = Project.create!(name: 'Awesome Project')
-    Project.all.should == [project2, project3, project1]
+    project1 = Project.create(name: 'Interesting Project')
+    project2 = Project.create(name: '1st Rails Project')
+    project3 = Project.create(name: 'Awesome Project')
+    expect(Project.all).to eq [project2, project3, project1]
   end
 end
