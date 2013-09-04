@@ -26,3 +26,4 @@ end
 gem 'jquery-rails'
 gem 'sorcery'
 gem 'turbolinks'
+gem 'figaro'

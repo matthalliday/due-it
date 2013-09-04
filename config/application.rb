@@ -57,11 +57,11 @@ module DueIt
     # Send email through Gmail
     config.action_mailer.delivery_method = :smtp
     config.action_mailer.smtp_settings = {
-      :address              => 'smtp.gmail.com',
-      :port                 => 587,
+      :address              => ENV['MAILER_ADDRESS'],
+      :port                 => ENV['MAILER_PORT'],
       :domain               => ENV['APP_URL'],
-      :user_name            => ENV['GMAIL_USERNAME'],
-      :password             => ENV['GMAIL_PASSWORD'],
+      :user_name            => ENV['MAILER_USERNAME'],
+      :password             => ENV['MAILER_PASSWORD'],
       :authentication       => 'plain',
       :enable_starttls_auto => true }
 
