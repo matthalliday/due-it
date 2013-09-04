@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.13'
+gem 'rails', '3.2.14'
 gem 'sqlite3'
 
 # Gems used only for assets and not required
@@ -17,9 +17,6 @@ end
 
 group :development, :test do
   gem 'rspec-rails', '~> 2.14'
-end
-
-group :test do
   gem 'shoulda-matchers'
 end
 
