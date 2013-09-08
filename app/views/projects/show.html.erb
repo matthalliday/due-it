@@ -10,19 +10,7 @@
 	</div>
 
 	<ul class="task-list">
-		<% @tasks.each do |task| %>
-			<li>
-				<h2><%= link_to task.name, [@project, task] %></h2>
-				<div class="meta clearfix">
-					<p>Estimated <%= task.estimate %></p>
-					<p>Due on <%= task.due_date.strftime('%B %-d') %></p>
-
-					<% if task.status == 'incomplete' %>
-						<%= link_to 'Complete', mark_task_complete_path(@project, task), method: :put, class: 'task-action complete' %>
-					<% end %>
-				</div>
-			</li>
-		<% end %>
+		<%= render partial: @tasks, locals: { project: @project } %>
 	</ul><!-- /.task-list -->
 </article><!-- /.project -->
 

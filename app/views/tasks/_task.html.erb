@@ -1,0 +1,14 @@
+<li>
+	<h2><%= link_to task.name, [project, task] %></h2>
+	<div class="meta clearfix">
+		<p>Estimated <%= task.estimate %></p>
+		<p>Due on <%= task.due_date.strftime('%B %-d') %></p>
+
+		<% # TODO make this less terrible %>
+		<% if task.status == 'incomplete' %>
+			<%= link_to 'Complete', mark_task_complete_path(project, task), method: :put, class: 'task-action complete' %>
+		<% elsif task.status == 'complete' %>
+			<%= link_to 'Mark as Incomplete', mark_task_incomplete_path(project, task), method: :put, class: 'task-action complete' %>
+		<% end %>
+	</div>
+</li>
