@@ -9,7 +9,7 @@
   </div>
 
   <%= form_for @user, url: password_reset_path(@user), html: {method: :put} do |f| %>
-    <%= render 'partials/errors', object: @user %>
+    <%= render 'shared/errors', object: @user %>
 
     <div class="field">
       <%= f.label :email %>

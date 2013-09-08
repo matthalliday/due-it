@@ -9,7 +9,7 @@
 	</div>
 
 	<%= form_for @user do |f| %>
-		<%= render 'partials/errors', object: @user %>
+		<%= render 'shared/errors', object: @user %>
 
 		<div class="field">
 			<%= f.label :username, 'Username *' %>

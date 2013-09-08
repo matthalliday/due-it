@@ -1,5 +1,5 @@
 <%= form_for [@project, @task] do |f| %>
-	<%= render 'partials/errors', object: @task %>
+	<%= render 'shared/errors', object: @task %>
 
 	<div class="field task-name">
 		<%= f.label :name, 'Name *' %>
