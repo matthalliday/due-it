@@ -20,23 +20,26 @@
 </head>
 
 <body>
-	<header role="banner">
+	<header class="app-banner" role="banner">
 		<div class="inner clearfix">
-			<h1><%= link_to 'Due It', root_path %></h1>
-			<nav role="navigation"><%= render 'shared/navigation' %></nav>
-		</div>
-	</header>
+			<h1 class="branding"><%= link_to 'Due It', root_path %></h1>
 
-	<div id="content" class="wrap">
+			<nav class="app-navigation" role="navigation">
+				<%= render 'shared/navigation' %>
+			</nav>
+		</div>
+	</header><!-- /.app-banner -->
+
+	<div id="content" class="app-content">
 		<% flash.each do |key, value| %>
 			<%= content_tag(:div, content_tag(:p, value), class: "flash #{key}") %>
 		<% end %>
 
 		<%= yield %>
 
-		<footer role="contentinfo">
+		<footer class="app-footer" role="contentinfo">
 			<p>Built with <a href="http://rubyonrails.org" title="Version <%= Rails.version %>">Ruby on Rails</a></p>
-		</footer>
-	</div><!-- /.wrap -->
+		</footer><!-- /.app-footer -->
+	</div><!-- /.app-content -->
 </body>
 </html>
