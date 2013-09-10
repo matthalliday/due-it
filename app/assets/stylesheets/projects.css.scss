@@ -10,7 +10,7 @@
 	.desc { padding: 16px 40px 0; }
 }
 
-.name {
+.project-name {
 	position: relative;
 	padding: 20px 40px;
 	@include vertical_gradient($primary, darken($primary, 8%));
@@ -49,8 +49,8 @@
 	background-color: $secondary;
 	color: #fff;
 
-	.count,
-	.message {
+	.message,
+	.task-count {
 		float: left;
 		margin-bottom: 0;
 	}
