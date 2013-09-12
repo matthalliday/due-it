@@ -19,7 +19,7 @@ class TasksController < ApplicationController
 
   def create
     @project = current_user.projects.find(params[:project_id])
-    @task = @project.tasks.build(params[:task])
+    @task = @project.tasks.build(task_params)
     if @task.save
       Project.increment_counter(:incomplete_tasks, params[:project_id])
       redirect_to @project, :notice => "The task has been added to the project."
@@ -37,7 +37,7 @@ class TasksController < ApplicationController
   def update
     @project = current_user.projects.find(params[:project_id])
     @task = @project.tasks.find(params[:id])
-    if @task.update_attributes(params[:task])
+    if @task.update(task_params)
       redirect_to @project, :notice => "The task details have been updated."
     else
       flash.now[:alert] = "Fix the errors below and try again."
@@ -87,5 +87,11 @@ class TasksController < ApplicationController
       @due_window = due_window
       render :due_window
     end
+  end
+
+  private
+
+  def task_params
+    params.require(:task).permit(:description, :due_date, :estimate, :name)
   end
 end

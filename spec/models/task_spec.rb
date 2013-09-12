@@ -6,8 +6,6 @@ describe Task do
   it { should validate_presence_of(:name) }
   it { should ensure_length_of(:description).is_at_most(500) }
   it { should ensure_length_of(:name).is_at_most(256) }
-  it { should_not allow_mass_assignment_of(:project_id) }
-  it { should_not allow_mass_assignment_of(:status) }
 
   it "should be ordered by due date by default" do
     task1 = FactoryGirl.create(:task, name: 'Task 1', due_date: Time.now)
