@@ -17,7 +17,7 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    @project = current_user.projects.build(params[:project])
+    @project = current_user.projects.build(project_params)
     if @project.save
       redirect_to @project, :notice => "The project has been created."
     else
@@ -32,7 +32,7 @@ class ProjectsController < ApplicationController
 
   def update
     @project = current_user.projects.find(params[:id])
-    if @project.update_attributes(params[:project])
+    if @project.update(project_params)
       redirect_to @project, :notice => "The project details have been updated."
     else
       flash.now[:alert] = "Fix the errors below and try again."
@@ -44,5 +44,11 @@ class ProjectsController < ApplicationController
     @project = current_user.projects.find(params[:id])
     @project.destroy
     redirect_to root_path, :notice => "The project has been removed."
+  end
+
+  private
+
+  def project_params
+    params.require(:project).permit(:description, :name)
   end
 end
