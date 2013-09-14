@@ -14,3 +14,13 @@ $body: "proxima-nova", Helvetica, Arial, sans-serif;
 // -------------------------------------------------------------------------- //
 $primary: #0661d0;
 $secondary: #011023;
+
+
+// Breakpoints
+// -------------------------------------------------------------------------- //
+$small: calc_em(320px);
+$medium: calc_em(640px);
+$large: calc_em(960px);
+
+
+// @media only screen and (min-width: $small) {}

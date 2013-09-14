@@ -11,16 +11,17 @@
  *= require_self
  */
 
+
+// Config
+// -------------------------------------------------------------------------- //
+@import "config/mixins";
+@import "config/environment";
+@import "config/normalize";
+@import "config/helpers";
+
+
 // Layout
 // -------------------------------------------------------------------------- //
-@import "config";    // Variables, mixins & functions
-@import "mixins";    // Mixins and placeholders
-@import "normalize"; // More consistent browser styling
-@import "helpers";   // Non-semantic helper classes
-@import "main";      // Layout, typography & color
-
-
-// Models
-// -------------------------------------------------------------------------- //
+@import "base";
 @import "projects";
 @import "tasks";
