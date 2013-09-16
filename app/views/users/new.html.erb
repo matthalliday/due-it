@@ -12,11 +12,11 @@
 
 		<div class="field">
 			<%= f.label :username, 'Username *' %>
-			<%= f.text_field :username %>
+			<%= f.text_field :username, autocapitalize: 'off' %>
 		</div>
 		<div class="field">
 			<%= f.label :email, 'Email *' %>
-			<%= f.text_field :email %>
+			<%= f.text_field :email, autocapitalize: 'off' %>
 		</div>
 		<div class="field">
 			<%= f.label :password, 'Password *' %>
