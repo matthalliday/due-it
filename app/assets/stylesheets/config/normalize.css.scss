@@ -353,11 +353,16 @@ input[type="radio"] {
  *    (include `-moz` to future-proof).
  */
 
+input[type="tel"],
+input[type="url"],
+input[type="date"],
+input[type="text"],
+input[type="email"],
 input[type="search"] {
     -webkit-appearance: textfield; /* 1 */
-    -moz-box-sizing: content-box;
-    -webkit-box-sizing: content-box; /* 2 */
-    box-sizing: content-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box; /* 2 */
+    box-sizing: border-box;
 }
 
 /**
@@ -388,6 +393,9 @@ input::-moz-focus-inner {
 textarea {
     overflow: auto; /* 1 */
     vertical-align: top; /* 2 */
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box; /* 2 */
+    box-sizing: border-box;
 }
 
 /* ==========================================================================

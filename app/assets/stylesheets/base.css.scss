@@ -6,26 +6,20 @@ body {
 
 .inner {
 	margin: 0 auto;
-	padding: 0 40px;
 }
 
 .app-content {
-	margin: 0 auto;
-	padding-top: 116px;
-	width: 640px;
+	margin-top: 24px;
+	padding: 0 12px;
 }
 
 .app-banner {
-	position: fixed;
-	z-index: 10;
-	padding: 16px 0;
-	width: 100%;
+	padding: 16px 24px;
 	@include box_shadow(0, 1px, 5px, rgba(0,0,0,0.25));
 	background-color: #fff;
 }
 
 .branding {
-	float: left;
 	margin: 6px 0 0;
 
 	a {
@@ -34,12 +28,11 @@ body {
 		color: #333;
 		@include transition(color, 0.3s);
 
-		&:hover { color: $primary; }
+		&:hover,
+		&:focus {
+			color: $primary;
+		}
 	}
-}
-
-.app-navigation {
-	float: right;
 }
 
 .nav-collection {
@@ -49,8 +42,7 @@ body {
 }
 
 .nav-item {
-	float: left;
-	margin-left: 24px;
+	margin-top: 12px;
 }
 
 .nav-title {
@@ -79,12 +71,15 @@ body {
 		color: $secondary;
 		@include transition(color, 0.3s);
 
-		&:hover { color: $primary; }
+		&:hover,
+		&:focus {
+			color: $primary;
+		}
 	}
 }
 
 .app-footer {
-	padding-bottom: 16px;
+	padding: 0 12px 16px;
 	text-align: right;
 
 	p {
@@ -102,18 +97,18 @@ body {
 
 .page-title {
 	margin-bottom: 20px;
-	padding-left: 40px;
+	padding-left: 20px;
 	font: $semi 26px $body;
 	text-shadow: 0 1px 1px #fff;
 }
 
 .flash,
 .page-message {
-	padding-left: 40px;
+	padding-left: 20px;
 }
 
 form {
-	padding: 16px 40px;
+	padding: 8px 20px;
 
 	.field {
 		margin: 16px 0;
@@ -123,27 +118,85 @@ form {
 			padding-left: 2px;
 		}
 
-		&.submit { margin-top: 32px; }
+		&.submit {
+			margin-top: 32px;
+		}
 	}
 
-	.field-wrap { overflow: hidden; }
+	.field-wrap {
+		overflow: hidden;
+	}
 
 	label {
 		display: block;
 		margin-bottom: 4px;
 	}
 
+	.estimate,
 	.model-name {
-		input[type="text"] { width: 100%; }
+		input[type="text"] {
+			width: 100%;
+		}
 	}
 
-	.estimate {
+	textarea {
+		width: 100%;
+	}
+}
+
+
+@media only screen and (min-width: $large) {
+	.app-banner {
+		position: fixed;
+		z-index: 10;
+		padding: 16px 0;
+		width: 100%;
+	}
+
+	.branding {
 		float: left;
-		margin-right: 40px;
-
-		input[type="text"] { width: 194px; }
 	}
 
-	.due-date { float: left; }
-	textarea { width: 100%; }
+	.app-navigation {
+		float: right;
+	}
+
+	.nav-item {
+		float: left;
+		margin-top: 0;
+		margin-left: 24px;
+	}
+
+	.inner {
+		margin: 0 auto;
+		padding: 0 40px;
+	}
+
+	.app-content {
+		margin: 0 auto;
+		padding-top: 116px;
+		width: 640px;
+	}
+
+	.flash,
+	.page-message {
+		padding-left: 40px;
+	}
+
+	.page-title {
+		padding-left: 40px;
+	}
+
+	form {
+		padding: 16px 40px;
+
+		.estimate {
+			float: left;
+			margin-right: 40px;
+		}
+
+		.due-date {
+			float: left;
+		}
+	}
 }

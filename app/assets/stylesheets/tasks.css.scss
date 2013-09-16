@@ -1,6 +1,6 @@
 .task-list {
 	margin: 0;
-	padding: 16px 40px;
+	padding: 8px 20px;
 	list-style: none;
 
 	li { padding: 16px 0; }
@@ -41,5 +41,13 @@
 			text-decoration: none;
 			color: #777;
 		}
+	}
+}
+
+
+@media only screen and (min-width: $large) {
+	.task-list {
+		margin: 0;
+		padding: 16px 40px;
 	}
 }

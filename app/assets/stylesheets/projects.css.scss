@@ -5,14 +5,18 @@
 	@include border_radius(6px);
 	background-color: #fff;
 
-	&:first-of-type { margin-top: 0; }
+	&:first-of-type {
+		margin-top: 0;
+	}
 
-	.desc { padding: 16px 40px 0; }
+	.desc {
+		padding: 16px 20px 0;
+	}
 }
 
 .project-name {
 	position: relative;
-	padding: 20px 40px;
+	padding: 12px 20px;
 	@include vertical_gradient($primary, darken($primary, 8%));
 
 	&:after {
@@ -42,7 +46,7 @@
 }
 
 .info-bar {
-	padding: 10px 40px;
+	padding: 10px 20px;
 	min-height: 16px;
 	font-size: 14px;
 	@include inset_box_shadow(0, 1px, 5px, rgba(0,0,0,1.0));
@@ -59,5 +63,20 @@
 		float: right;
 		text-decoration: none;
 		color: #fff;
+	}
+}
+
+
+@media only screen and (min-width: $large) {
+	.project-name {
+		padding: 20px 40px;
+	}
+
+	.info-bar {
+		padding: 10px 40px;
+	}
+
+	.project .desc {
+		padding: 16px 40px 0;
 	}
 }
