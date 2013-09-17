@@ -1,9 +1,8 @@
-Welcome to Due It, <%= @user.email %>
+<%= @subject %>
 ===============================================
 
-You have successfully signed up to Due It,
-your username is: <%= @user.email %>.
+Before you can start using Due It, you'll need to
+confirm your email (<%= @user.email %>) by
+visiting the following link in your browser:
 
-To login to the site, just follow this link: <%= @url %>.
-
-Thanks for joining and have a great day!
+<%= @url %>

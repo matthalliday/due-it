@@ -4,11 +4,9 @@
 	<title><%= @subject %></title>
 	<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
 </head>
-
 <body>
-	<h1>Welcome to Due It, <%= @user.email %></h1>
-	<p>You have successfully signed up to Due It, your username is: <%= @user.email %>.</p>
-	<p>To login to the site, just follow this link: <%= @url %>.</p>
-	<p>Thanks for joining and have a great day!</p>
+	<h1><%= @subject %></h1>
+	<p>Before you can start using Due It, you'll need to confirm your email (<%= @user.email %>) by visiting the following link in your browser:</p>
+	<p><%= @url %></p>
 </body>
 </html>
