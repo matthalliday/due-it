@@ -1,10 +1,8 @@
 class TasksController < ApplicationController
   before_filter :require_login
-  respond_to :html, :json, :xml
 
   def index
     @projects = current_user.projects.includes(:tasks).where('tasks.status = ?', 'incomplete').order('tasks.due_date ASC')
-    respond_with current_user.tasks
   end
 
   def show
