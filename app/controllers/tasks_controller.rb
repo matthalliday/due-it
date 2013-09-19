@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
   before_filter :require_login
+  respond_to :html, :json
 
   def index
     @projects = current_user.projects.includes(:tasks).where('tasks.status = ?', 'incomplete').order('tasks.due_date ASC')
@@ -8,6 +9,7 @@ class TasksController < ApplicationController
   def show
     @project = current_user.projects.find(params[:project_id])
     @task = @project.tasks.find(params[:id])
+    respond_with @task
   end
 
   def new

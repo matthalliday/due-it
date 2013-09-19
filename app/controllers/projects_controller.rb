@@ -1,13 +1,16 @@
 class ProjectsController < ApplicationController
   before_filter :require_login
+  respond_to :html, :json
 
   def index
     @projects = current_user.projects
+    respond_with @projects
   end
 
   def show
     @project = current_user.projects.find(params[:id])
     @tasks = @project.tasks.incomplete
+    respond_with @project
   end
 
   def new
