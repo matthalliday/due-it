@@ -9,6 +9,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'sorcery'
 gem 'turbolinks'
+gem 'active_model_serializers'
 gem 'figaro'
 
 group :development do
