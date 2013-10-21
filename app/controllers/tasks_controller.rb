@@ -77,7 +77,7 @@ class TasksController < ApplicationController
     @project = current_user.projects.includes(:tasks).where('tasks.status = ?', 'complete').find(params[:project_id])
   end
 
-  %w(due_today due_this_week due_this_month overdue).each do |due_window|
+  %w(due_today due_this_week overdue).each do |due_window|
     define_method "#{due_window}" do
       @projects = []
       current_user.projects.each do |project|
