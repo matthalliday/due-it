@@ -17,7 +17,7 @@
 		<div class="field due-date">
 			<%= f.label :due_date, 'Due Date *' %>
 			<%= f.date_select :due_date,
-			                  default: Time.zone.now.tomorrow,
+			                  default: Time.zone.now.end_of_week(:saturday),
 			                  order: [:month, :day] %>
 		</div>
 	</div>
