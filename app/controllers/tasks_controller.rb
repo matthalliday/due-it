@@ -38,7 +38,7 @@ class TasksController < ApplicationController
     @project = current_user.projects.find(params[:project_id])
     @task = @project.tasks.find(params[:id])
     if @task.update(task_params)
-      redirect_to @project, :notice => "The task details have been updated."
+      redirect_to [@project, @task], :notice => "The task details have been updated."
     else
       flash.now[:alert] = "Fix the errors below and try again."
       render :edit
