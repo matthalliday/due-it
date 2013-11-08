@@ -3,7 +3,7 @@ DueIt::Application.routes.draw do
 
   get '/tasks' => 'tasks#index', as: 'all_tasks'
   get '/tasks/today' => 'tasks#due_today', as: 'tasks_today'
-  get '/tasks/this-week' => 'tasks#due_this_week', as: 'tasks_this_week'
+  get '/tasks/upcoming' => 'tasks#upcoming', as: 'tasks_upcoming'
   get '/tasks/overdue' => 'tasks#overdue', as: 'tasks_overdue'
   put '/projects/:project_id/tasks/:id/complete' => 'tasks#mark_complete', as: 'mark_task_complete'
   put '/projects/:project_id/tasks/:id/incomplete' => 'tasks#mark_incomplete', as: 'mark_task_incomplete'
