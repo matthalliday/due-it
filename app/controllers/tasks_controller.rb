@@ -59,7 +59,7 @@ class TasksController < ApplicationController
 
   def mark_complete
     @task = current_user.tasks.find(params[:id])
-    @task.update_attribute(:status, 'complete')
+    @task.update_column(:status, 'complete')
     Project.increment_counter(:complete_tasks, params[:project_id])
     Project.decrement_counter(:incomplete_tasks, params[:project_id])
     redirect_to project_path(params[:project_id]), :notice => "The task has been marked as complete."
@@ -67,7 +67,7 @@ class TasksController < ApplicationController
 
   def mark_incomplete
     @task = current_user.tasks.find(params[:id])
-    @task.update_attribute(:status, 'incomplete')
+    @task.update_column(:status, 'incomplete')
     Project.increment_counter(:incomplete_tasks, params[:project_id])
     Project.decrement_counter(:complete_tasks, params[:project_id])
     redirect_to project_path(params[:project_id]), :notice => "The task has been marked as incomplete."
