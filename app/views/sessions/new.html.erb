@@ -10,8 +10,8 @@
 
 	<%= form_tag sessions_path do %>
 		<div class="field">
-			<%= label_tag :username, 'Username *' %>
-			<%= text_field_tag :username, params[:username], autocapitalize: 'off' %>
+			<%= label_tag :email, 'Email *' %>
+			<%= text_field_tag :email, params[:email], autocapitalize: 'off' %>
 		</div>
 		<div class="field">
 			<%= label_tag :password, 'Password *' %>
