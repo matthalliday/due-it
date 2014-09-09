@@ -1,24 +1,24 @@
 source 'https://rubygems.org'
-ruby '2.1.1'
+ruby '2.1.2'
 
-gem 'rails', '4.0.1'
+gem 'rails', '4.1.5'
 gem 'pg'
-gem 'sass-rails', '~> 4.0.0'
+gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'sorcery'
 gem 'turbolinks'
 gem 'active_model_serializers'
-gem 'figaro'
 
 group :development do
+  gem 'spring'
   gem 'better_errors'
 end
 
 group :development, :test do
   gem 'rspec-rails', '~> 2.14.0'
-  gem 'shoulda-matchers', '~> 2.3.0'
+  gem 'shoulda-matchers', '~> 2.3.0', require: false
   gem 'factory_girl_rails', '~> 4.0'
 end
 
@@ -29,5 +29,5 @@ end
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
-  gem 'sdoc', require: false
+  gem 'sdoc', '~> 0.4.0'
 end
