@@ -3,7 +3,7 @@ class TasksController < ApplicationController
   respond_to :html, :json
 
   def index
-    @projects = current_user.projects.includes(:tasks).where('tasks.status = ?', 'incomplete')
+    @projects = current_user.projects.includes(:tasks).where('tasks.status = ?', 'incomplete').references(:tasks)
   end
 
   def show
