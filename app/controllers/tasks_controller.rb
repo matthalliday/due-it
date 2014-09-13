@@ -74,7 +74,7 @@ class TasksController < ApplicationController
   end
 
   def completed
-    @project = current_user.projects.includes(:tasks).where('tasks.status = ?', 'complete').find(params[:project_id])
+    @project = current_user.projects.includes(:tasks).where('tasks.status = ?', 'complete').references(:tasks).find(params[:project_id])
   end
 
   %w(due_today upcoming overdue).each do |due_window|
