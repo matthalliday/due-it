@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130302011923) do
+ActiveRecord::Schema.define(version: 20130301024141) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,8 +19,8 @@ ActiveRecord::Schema.define(version: 20130302011923) do
   create_table "projects", force: true do |t|
     t.string   "name"
     t.text     "description"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "incomplete_tasks", default: 0
     t.integer  "complete_tasks",   default: 0
     t.integer  "user_id"
@@ -31,8 +31,8 @@ ActiveRecord::Schema.define(version: 20130302011923) do
     t.text     "description"
     t.string   "estimate"
     t.datetime "due_date"
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "project_id"
     t.string   "status",      default: "incomplete"
   end
@@ -42,8 +42,8 @@ ActiveRecord::Schema.define(version: 20130302011923) do
     t.string   "email"
     t.string   "crypted_password"
     t.string   "salt"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "remember_me_token"
     t.datetime "remember_me_token_expires_at"
     t.string   "reset_password_token"

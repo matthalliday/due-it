@@ -17,9 +17,9 @@ group :development do
 end
 
 group :development, :test do
-  gem 'rspec-rails', '~> 2.14.0'
-  gem 'shoulda-matchers', '~> 2.3.0', require: false
-  gem 'factory_girl_rails', '~> 4.0'
+  gem 'rspec-rails', '~> 3.0.0'
+  gem 'shoulda-matchers', require: false
+  gem 'factory_girl_rails'
 end
 
 group :production do
