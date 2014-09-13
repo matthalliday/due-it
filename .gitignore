@@ -14,6 +14,3 @@
 /log/*.log
 /tmp
 *.swp
-
-# Ignore application configuration
-/config/secrets.yml

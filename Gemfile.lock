@@ -45,6 +45,11 @@ GEM
       execjs
     coffee-script-source (1.8.0)
     diff-lcs (1.2.5)
+    dotenv (0.11.1)
+      dotenv-deployment (~> 0.0.2)
+    dotenv-deployment (0.0.2)
+    dotenv-rails (0.11.1)
+      dotenv (= 0.11.1)
     erubis (2.7.0)
     execjs (2.2.1)
     factory_girl (4.4.0)
@@ -172,6 +177,7 @@ DEPENDENCIES
   active_model_serializers
   better_errors
   coffee-rails (~> 4.0.0)
+  dotenv-rails
   factory_girl_rails
   jquery-rails
   pg
