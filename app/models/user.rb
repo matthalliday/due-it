@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   authenticates_with_sorcery!
 
-  has_many :projects, dependent: :destroy
+  has_many :projects, -> { order(name: :asc) }, dependent: :destroy
   has_many :tasks, through: :projects
 
   attr_accessor :password_confirmation

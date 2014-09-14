@@ -12,11 +12,4 @@ describe Project do
     project = FactoryGirl.create(:project, id: 1, name: 'Test Project')
     expect(project.to_param).to eq '1-test-project'
   end
-
-  it "should be ordered alphabetically by default" do
-    project1 = FactoryGirl.create(:project, name: 'Interesting Project')
-    project2 = FactoryGirl.create(:project, name: '1st Rails Project')
-    project3 = FactoryGirl.create(:project, name: 'Awesome Project')
-    expect(Project.all).to eq [project2, project3, project1]
-  end
 end
