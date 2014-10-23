@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.1.2'
+ruby '2.1.3'
 
 gem 'rails', '4.1.5'
 gem 'pg'
@@ -10,6 +10,7 @@ gem 'jquery-rails'
 gem 'sorcery'
 gem 'turbolinks'
 gem 'active_model_serializers'
+gem 'skylight'
 
 group :development do
   gem 'spring'
