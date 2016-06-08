@@ -78,6 +78,21 @@ body {
 	}
 }
 
+.search-form {
+	padding: 0;
+
+	input[type="search"] {
+		margin-top: 2px;
+		padding: 2px 4px;
+		font-size: 14px;
+		border: 1px solid #ccc;
+
+		&:focus {
+			border-color: #666;
+		}
+	}
+}
+
 .page-title {
 	margin-bottom: 20px;
 	padding-left: 20px;

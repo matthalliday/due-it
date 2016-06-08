@@ -23,6 +23,14 @@
 				<li class="sub-nav-item"><%= link_to 'Log Out', log_out_path %></li>
 			</ul>
 		</li>
+		<li class="nav-item">
+			<span class="nav-title">Search</span>
+			<%= form_tag projects_path, method: 'get', class: 'search-form' do %>
+				<%= label_tag :search, nil, class: 'visuallyhidden' %>
+				<%= search_field_tag :search, params[:search] %>
+				<%= submit_tag "Search", name: nil, class: 'visuallyhidden' %>
+			<% end %>
+		</li>
 	<% else %>
 		<li class="nav-item">
 			<span class="nav-title">Account</span>
