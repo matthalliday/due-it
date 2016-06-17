@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   def create
-    user = login(params[:email], params[:password], params[:remember_me])
+    user = login(params[:email], params[:password], true)
     if user
       redirect_back_or_to root_url
       flash[:success] = "Logged in successfully"
