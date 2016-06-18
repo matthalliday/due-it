@@ -4,6 +4,19 @@ body {
 	color: #222;
 }
 
+#content:focus {
+	outline: none;
+}
+
+.skipper:focus {
+	display: block;
+	padding: 10px 16px;
+	font-size: 14px;
+	text-decoration: none;
+	background-color: #011023;
+	color: #fff;
+}
+
 .inner {
 	margin: 0 auto;
 }

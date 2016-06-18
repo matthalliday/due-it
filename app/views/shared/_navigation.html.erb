@@ -25,7 +25,7 @@
 		</li>
 		<li class="nav-item">
 			<span class="nav-title">Search</span>
-			<%= form_tag projects_path, method: 'get', class: 'search-form' do %>
+			<%= form_tag projects_path, method: 'get', class: 'search-form', role: 'search' do %>
 				<%= label_tag :search, nil, class: 'visuallyhidden' %>
 				<%= search_field_tag :search, params[:search] %>
 				<%= submit_tag "Search", name: nil, class: 'visuallyhidden' %>

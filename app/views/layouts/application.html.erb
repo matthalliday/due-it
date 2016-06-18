@@ -15,20 +15,20 @@
 	<%= javascript_include_tag "application" %>
 	<%= csrf_meta_tags %>
 </head>
-
 <body>
+	<a href="#content" class="visuallyhidden focusable skipper">Skip to content</a>
+
 	<header class="app-banner" role="banner">
 		<div class="inner clearfix">
 			<h1 class="branding"><%= link_to 'Due It', root_path %></h1>
 
 			<nav class="app-navigation" role="navigation">
-				<h1 class="visuallyhidden">Navigation</h1>
 				<%= render 'shared/navigation' %>
 			</nav>
 		</div>
 	</header><!-- /.app-banner -->
 
-	<main id="content" class="app-content">
+	<main id="content" class="app-content" role="main" tabindex="-1">
 		<% flash.each do |key, value| %>
 			<%= content_tag(:div, content_tag(:p, value), class: "flash #{key}") %>
 		<% end %>
