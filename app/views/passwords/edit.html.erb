@@ -1,0 +1,22 @@
+<div class="project">
+  <div class="project-name">
+    <h1><%= t(".title") %></h1>
+  </div>
+
+  <div class="info-bar clearfix">
+    <p class="message">Fields with an asterisk are required</p>
+  </div>
+
+  <%= form_for :password_reset,
+        url: user_password_path(@user, token: @user.confirmation_token),
+        html: { method: :put } do |form| %>
+    <div class="field">
+      <%= form.label :password %>
+      <%= form.password_field :password %>
+    </div>
+
+    <div class="field submit">
+      <%= form.submit %>
+    </div>
+  <% end %>
+</div>

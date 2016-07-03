@@ -1,33 +1,17 @@
 <div class="project">
 	<div class="project-name">
-		<h1>Sign Up</h1>
+		<h1><%= t(".title") %></h1>
 	</div>
 
 	<div class="info-bar clearfix">
 		<p class="message">Fields with an asterisk are required</p>
 	</div>
 
-	<%= form_for @user do |f| %>
-		<%= render 'shared/errors', object: @user %>
+  <%= form_for @user do |form| %>
+    <%= render partial: '/users/form', object: form %>
 
-		<div class="field">
-			<%= f.label :username, 'Username *' %>
-			<%= f.text_field :username, autocapitalize: 'off' %>
-		</div>
-		<div class="field">
-			<%= f.label :email, 'Email *' %>
-			<%= f.text_field :email, autocapitalize: 'off' %>
-		</div>
-		<div class="field">
-			<%= f.label :password, 'Password *' %>
-			<%= f.password_field :password %>
-		</div>
-		<div class="field">
-			<%= f.label :password_confirmation, 'Confirm Password *' %>
-			<%= f.password_field :password_confirmation %>
-		</div>
-		<div class="field submit">
-			<%= f.submit %>
-		</div>
-	<% end %>
+    <div class="submit-field">
+      <%= form.submit 'Sign Up' %>
+    </div>
+  <% end %>
 </div><!-- /.project -->

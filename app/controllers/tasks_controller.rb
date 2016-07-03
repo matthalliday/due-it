@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_filter :require_login
+  before_action :require_login
 
   def index
     @projects = current_user.projects.order(name: :asc).includes(:tasks).where('tasks.status' => 'incomplete')
