@@ -11,7 +11,7 @@
 			</div>
 
 			<div class="info-bar clearfix">
-				<p class="task-count"><%= pluralize(project.incomplete_tasks, 'incomplete task', 'incomplete tasks') %></p>
+				<p class="task-count"><%= pluralize(project.incomplete_tasks, 'incomplete task', plural: 'incomplete tasks') %></p>
 				<%= link_to 'Add Task', new_project_task_path(project), class: 'button' %>
 			</div>
 
