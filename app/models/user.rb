@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   include Clearance::User
 
   has_many :projects, -> { order(name: :asc) }, dependent: :destroy
