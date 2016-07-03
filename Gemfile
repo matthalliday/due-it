@@ -8,7 +8,6 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'clearance'
-gem 'skylight'
 
 group :development do
   gem 'spring'
@@ -25,6 +24,7 @@ end
 group :production do
   gem 'unicorn'
   gem 'rails_12factor'
+  gem 'skylight'
 end
 
 group :doc do
