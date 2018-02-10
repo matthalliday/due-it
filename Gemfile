@@ -1,15 +1,15 @@
 ruby '2.3.1'
 source 'https://rubygems.org'
 
-gem 'rails', '5.0.6'
+gem 'rails', '~> 5.1.4'
 gem 'pg', '~> 0.18'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.2'
 gem 'jquery-rails'
 gem 'clearance'
 
 group :development do
+  gem 'listen'
   gem 'spring'
   gem 'better_errors'
 end
@@ -21,7 +21,6 @@ end
 group :production do
   gem 'unicorn'
   gem 'rails_12factor'
-  gem 'skylight'
 end
 
 group :doc do
