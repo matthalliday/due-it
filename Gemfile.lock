@@ -86,7 +86,7 @@ GEM
     nio4r (2.2.0)
     nokogiri (1.10.4)
       mini_portile2 (~> 2.4.0)
-    pg (0.21.0)
+    pg (1.1.4)
     rack (2.0.7)
     rack-test (0.8.2)
       rack (>= 1.0, < 3)
@@ -170,7 +170,7 @@ DEPENDENCIES
   dotenv-rails
   jquery-rails
   listen
-  pg (~> 0.18)
+  pg (~> 1.1)
   rails (~> 5.1.4)
   rails_12factor
   sass-rails (~> 5.0)
